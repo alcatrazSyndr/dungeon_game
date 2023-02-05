@@ -108,7 +108,7 @@ public class DungeonGame_NavMeshMovement : MonoBehaviour
         return false;
     }
 
-    public void JoystickMove(Vector2 joystickDeltaOffset) => Move(new Vector2(-joystickDeltaOffset.x, joystickDeltaOffset.y));
+    public void JoystickMove(Vector2 joystickDeltaOffset) => Move(joystickDeltaOffset);
     public void Move(Vector2 inputVector)
     {
         inputVector.Normalize();
