@@ -14,6 +14,7 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
     public UnityEvent OnRollFinished = new UnityEvent();
     public UnityEvent OnAttackPeaked = new UnityEvent();
     public UnityEvent OnAttackEnded = new UnityEvent();
+    public UnityEvent OnAttackPush = new UnityEvent();
     public UnityEvent OnLeftCombatStance = new UnityEvent();
 
     private void OnEnable()
@@ -50,6 +51,11 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
     public void AttackPeak()
     {
         OnAttackPeaked?.Invoke();
+    }
+
+    public void AttackPush()
+    {
+        OnAttackPush?.Invoke();
     }
 
     private void StartAttack(int i)

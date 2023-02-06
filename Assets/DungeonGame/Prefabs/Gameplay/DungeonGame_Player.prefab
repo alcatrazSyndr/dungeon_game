@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5220704509660883416}
   - component: {fileID: 2523440837718717151}
   - component: {fileID: 2453903403965606549}
+  - component: {fileID: 1666020926}
   m_Layer: 0
   m_Name: DungeonGame_Player
   m_TagString: Untagged
@@ -57,8 +58,8 @@ MonoBehaviour:
   _camera: {fileID: 3379970134555826836}
   _cameraMaxAngle: 80
   _cameraMinAngle: 320
-  _initialCameraFOV: 40
-  _sprintCameraFOVModifier: 10
+  _initialCameraFOV: 38
+  _sprintCameraFOVModifier: 5
 --- !u!114 &7426836820356024250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,15 +72,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e67f815f959a74f868e21beb118d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxAttackCombo: 3
   _sprintMoveSpeedModifier: 4
   _defaultMoveSpeed: 6
-  _movement: {fileID: 2453903403965606549}
-  _input: {fileID: 5220704509660883416}
-  _animation: {fileID: 0}
   OnSprintChanged:
     m_PersistentCalls:
       m_Calls: []
   OnRolled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttacked:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5220704509660883416
@@ -94,9 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90d5e652404b0044b1e1f666bc0d4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnMovementInputStarted:
-    m_PersistentCalls:
-      m_Calls: []
   OnMovementInputChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -110,6 +109,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnLookInputChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackInput:
     m_PersistentCalls:
       m_Calls: []
 --- !u!195 &2523440837718717151
@@ -153,6 +155,18 @@ MonoBehaviour:
   _maxForwardAngle: 80
   _wideTurnAppliedSpeed: 0.1
   DebugGizmos: 0
+--- !u!114 &1666020926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276810962779242360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65f428fc34fa4c4ab7315e777201657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5425644854425840407
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8086056405754872508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.559, z: 0}
+  m_LocalPosition: {x: 0, y: 1.772, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -224,6 +238,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 986997285572839568}
     m_Modifications:
+    - target: {fileID: 3379970133996501349, guid: 80469d9b326ce96468aef45defcd3ffb,
+        type: 3}
+      propertyPath: field of view
+      value: 38
+      objectReference: {fileID: 0}
     - target: {fileID: 3379970133996501350, guid: 80469d9b326ce96468aef45defcd3ffb,
         type: 3}
       propertyPath: m_RootOrder
@@ -409,3 +428,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d3eee364836e843a488d9de0d1a1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _combatCooldown: 10
+  OnRollFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackPeaked:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackPush:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLeftCombatStance:
+    m_PersistentCalls:
+      m_Calls: []

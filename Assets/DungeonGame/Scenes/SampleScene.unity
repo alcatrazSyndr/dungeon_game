@@ -323,15 +323,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1452926371097882528, guid: 719e6f341ddb28d40baa05af1a1de1dc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.58
+      objectReference: {fileID: 0}
     - target: {fileID: 3276810962779242360, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
       propertyPath: m_Name
       value: DungeonGame_Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5402144440542920994, guid: 719e6f341ddb28d40baa05af1a1de1dc,
-        type: 3}
-      propertyPath: _combatCooldown
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8487045366185733914, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
@@ -388,6 +388,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9084181435316172473, guid: 719e6f341ddb28d40baa05af1a1de1dc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd95d05da092ee546bb149f526e4d054, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 719e6f341ddb28d40baa05af1a1de1dc, type: 3}
 --- !u!1 &410087039
@@ -1590,24 +1595,6 @@ Transform:
   m_Father: {fileID: 2144296388}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1666020919 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3276810962779242360, guid: 719e6f341ddb28d40baa05af1a1de1dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 385736408}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1666020926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666020919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b65f428fc34fa4c4ab7315e777201657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1896222449
 GameObject:
   m_ObjectHideFlags: 0

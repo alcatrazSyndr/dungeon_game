@@ -20,6 +20,7 @@ public class DungeonGame_PlayerController : MonoBehaviour
     private int _attackNumber = 1;
     private bool _rolling = false;
     private bool _attacking = false;
+    private bool _attackPushing = false;
 
     private void OnEnable()
     {
@@ -42,6 +43,7 @@ public class DungeonGame_PlayerController : MonoBehaviour
         _animation.OnRollFinished.AddListener(RollEnd);
         _animation.OnAttackPeaked.AddListener(AttackPeak);
         _animation.OnAttackEnded.AddListener(AttackEnd);
+        _animation.OnAttackPush.AddListener(AttackPush);
 
         StartCoroutine(MovementCRT());
     }
@@ -62,6 +64,7 @@ public class DungeonGame_PlayerController : MonoBehaviour
         _animation.OnRollFinished.RemoveListener(RollEnd);
         _animation.OnAttackPeaked.RemoveListener(AttackPeak);
         _animation.OnAttackEnded.RemoveListener(AttackEnd);
+        _animation.OnAttackPush.RemoveListener(AttackPush);
     }
 
     private bool InAction()
@@ -78,16 +81,39 @@ public class DungeonGame_PlayerController : MonoBehaviour
     {
         if (InAction()) return;
 
+        if (_sprint > 0f)
+            StartCoroutine(SprintOffCRT());
+
         _attacking = true;
         OnAttacked?.Invoke(_attackNumber);
         _attackNumber++;
         if (_attackNumber > _maxAttackCombo)
             _attackNumber = 1;
+
+        _movement.JoystickMove(new Vector2(0f, 1f));
+    }
+
+    private void AttackPush()
+    {
+        StartCoroutine(AttackPushCRT());
     }
 
     private void AttackPeak()
     {
-        print("peak");
+        _attackPushing = false;
+        StopCoroutine(AttackPushCRT());
+    }
+
+    private IEnumerator AttackPushCRT()
+    {
+        _attackPushing = true;
+        while (_attacking)
+        {
+            _movement.JoystickMove(new Vector2(0f, 10f));
+            yield return null;
+        }
+        _attackPushing = false;
+        yield break;
     }
 
     private void AttackEnd()
@@ -203,7 +229,7 @@ public class DungeonGame_PlayerController : MonoBehaviour
         {
             if (!InAction())
                 _movement.JoystickMove(_movementInput);
-            else if (_attacking)
+            else if (_attacking && !_attackPushing)
                 _movement.JoystickMove(Vector2.zero);
             yield return null;
         }
