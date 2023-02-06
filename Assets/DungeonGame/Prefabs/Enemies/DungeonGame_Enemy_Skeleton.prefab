@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2711574058357935427}
+  - component: {fileID: 3902268963750896267}
+  - component: {fileID: 3880717023437834994}
+  - component: {fileID: 2619864181398148183}
   m_Layer: 0
   m_Name: DungeonGame_Enemy_Skeleton
   m_TagString: Untagged
@@ -32,6 +35,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &3902268963750896267
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881813814399980488}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3880717023437834994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881813814399980488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1468223395834f428259484a40c3730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _accelerationDamp: 0.1
+  _moveSpeed: 4
+  _defaultAgentStoppingDistance: 0.025
+  _turnSpeed: 9
+  _maxForwardAngle: 80
+  _wideTurnAppliedSpeed: 0.1
+  DebugGizmos: 0
+--- !u!114 &2619864181398148183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881813814399980488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 132e98b37fcd0fb4dba2dc38f5f3b85d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerDebug: {fileID: 0}
 --- !u!1001 &6425974086821311281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46,13 +103,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777870179777212359, guid: dd06363efa505b0409f06eea08c44f1b,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777870179777212359, guid: dd06363efa505b0409f06eea08c44f1b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777870179777212359, guid: dd06363efa505b0409f06eea08c44f1b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777870179777212359, guid: dd06363efa505b0409f06eea08c44f1b,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6777870179777212359, guid: dd06363efa505b0409f06eea08c44f1b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.092
       objectReference: {fileID: 0}
     - target: {fileID: 6777870179777212359, guid: dd06363efa505b0409f06eea08c44f1b,
         type: 3}
@@ -99,6 +171,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonGame_Character_Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 6867051162841724323, guid: dd06363efa505b0409f06eea08c44f1b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 04b8bacc98c40f64fb5deb8ae8e87972, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd06363efa505b0409f06eea08c44f1b, type: 3}
 --- !u!4 &514096891727453430 stripped
@@ -107,3 +184,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6425974086821311281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &519658601673157962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6781180635251547771, guid: dd06363efa505b0409f06eea08c44f1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6425974086821311281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7807538397171132148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519658601673157962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffe0a2aae9b1b1499f2830bcb223f6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAttackAnimationPeaked:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFootstep:
+    m_PersistentCalls:
+      m_Calls: []
