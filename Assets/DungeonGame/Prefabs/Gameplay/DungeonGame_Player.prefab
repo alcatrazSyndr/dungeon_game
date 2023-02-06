@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5220704509660883416}
   - component: {fileID: 2523440837718717151}
   - component: {fileID: 2453903403965606549}
-  - component: {fileID: 2289046201297929021}
   m_Layer: 0
   m_Name: DungeonGame_Player
   m_TagString: Untagged
@@ -51,12 +50,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1054c664aef460547a9e42b281e6b727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerController: {fileID: 7426836820356024250}
   _input: {fileID: 5220704509660883416}
   _cameraRoot: {fileID: 1452926371097882528}
   _cameraOffset: {fileID: 986997285572839568}
   _camera: {fileID: 3379970134555826836}
   _cameraMaxAngle: 80
   _cameraMinAngle: 320
+  _initialCameraFOV: 40
+  _sprintCameraFOVModifier: 10
 --- !u!114 &7426836820356024250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,9 +71,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e67f815f959a74f868e21beb118d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sprintMoveSpeedModifier: 4
+  _defaultMoveSpeed: 6
   _movement: {fileID: 2453903403965606549}
   _input: {fileID: 5220704509660883416}
+  _animation: {fileID: 0}
   OnSprintChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRolled:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5220704509660883416
@@ -96,6 +104,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnSprintInputChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRollInputStarted:
     m_PersistentCalls:
       m_Calls: []
   OnLookInputChanged:
@@ -136,26 +147,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _accelerationDamp: 0.1
-  _moveSpeed: 7
+  _moveSpeed: 4
   _defaultAgentStoppingDistance: 0.025
   _turnSpeed: 9
   _maxForwardAngle: 80
   _wideTurnAppliedSpeed: 0.1
   DebugGizmos: 0
---- !u!114 &2289046201297929021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3276810962779242360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33d3eee364836e843a488d9de0d1a1c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 9084181436385700221}
-  _playerController: {fileID: 7426836820356024250}
 --- !u!1 &5425644854425840407
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,12 +373,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1907461519503194529}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &9084181436385700221 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7235548230501617884, guid: 639611dac34b2fe488491d3f9be8f6e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1907461519503194529}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9084181436385700222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7235548230501617887, guid: 639611dac34b2fe488491d3f9be8f6e9,
@@ -406,3 +397,15 @@ MonoBehaviour:
   OnFootstep:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5402144440542920994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084181436385700222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d3eee364836e843a488d9de0d1a1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

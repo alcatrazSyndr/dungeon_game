@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class DungeonGame_PlayerCamera : MonoBehaviour
 {
+    [SerializeField] private DungeonGame_PlayerController _playerController;
     [SerializeField] private DungeonGame_PlayerInput _input;
     [SerializeField] private Transform _cameraRoot;
     [SerializeField] private Transform _cameraOffset;
     [SerializeField] private Camera _camera;
     [SerializeField] private float _cameraMaxAngle = 80f;
     [SerializeField] private float _cameraMinAngle = 320f;
+    [SerializeField] private float _initialCameraFOV = 40f;
+    [SerializeField] private float _sprintCameraFOVModifier = 10f;
 
     private Vector3 _originalOffset = Vector3.zero;
 
-    private void Start()
+    private void OnEnable()
     {
         _originalOffset = _cameraRoot.localPosition;
         _cameraRoot.SetParent(null);
         Cursor.lockState = CursorLockMode.Locked;
+        _camera.fieldOfView = _initialCameraFOV;
+
+        _input.OnLookInputChanged.AddListener(LookInput);
+        _playerController.OnSprintChanged.AddListener(SprintChanged);
+    }
+
+    private void OnDisable()
+    {
+        _input.OnLookInputChanged.RemoveListener(LookInput);
     }
 
     private void Update()
@@ -37,8 +49,6 @@ public class DungeonGame_PlayerCamera : MonoBehaviour
         offsetRotation.x += (-input.y * 0.1f);
         offsetRotation.x = ClampCameraAngle(offsetRotation.x);
         _cameraOffset.localEulerAngles = offsetRotation;
-        //LOCK TO 80, 320
-        print(_cameraOffset.localEulerAngles);
     }
 
     private float ClampCameraAngle(float wantedCameraRotation)
@@ -70,13 +80,9 @@ public class DungeonGame_PlayerCamera : MonoBehaviour
         return angle;
     }
 
-    private void OnEnable()
+    private void SprintChanged(float sprint)
     {
-        _input.OnLookInputChanged.AddListener(LookInput);
-    }
-
-    private void OnDisable()
-    {
-        _input.OnLookInputChanged.RemoveListener(LookInput);
+        float newFOV = _initialCameraFOV + (_sprintCameraFOVModifier * sprint);
+        _camera.fieldOfView = newFOV;
     }
 }

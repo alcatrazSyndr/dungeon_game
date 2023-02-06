@@ -323,25 +323,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2453903403965606549, guid: 719e6f341ddb28d40baa05af1a1de1dc,
-        type: 3}
-      propertyPath: _moveSpeed
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3276810962779242360, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
       propertyPath: m_Name
       value: DungeonGame_Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7426836820356024250, guid: 719e6f341ddb28d40baa05af1a1de1dc,
+    - target: {fileID: 5402144440542920994, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
-      propertyPath: _defaultMoveSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7426836820356024250, guid: 719e6f341ddb28d40baa05af1a1de1dc,
-        type: 3}
-      propertyPath: _sprintMoveSpeedModifier
-      value: 4
+      propertyPath: _combatCooldown
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8487045366185733914, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
@@ -1600,6 +1590,24 @@ Transform:
   m_Father: {fileID: 2144296388}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1666020919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3276810962779242360, guid: 719e6f341ddb28d40baa05af1a1de1dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 385736408}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1666020926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666020919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65f428fc34fa4c4ab7315e777201657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1896222449
 GameObject:
   m_ObjectHideFlags: 0
