@@ -4,6 +4,10 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class DungeonGame_NavMeshMovement : MonoBehaviour
 {
+    [SerializeField] private bool _lookMove = true;
+    [SerializeField] private Transform _lookAtPoint;
+    [SerializeField] private Transform _cameraTransform;
+
     private Transform _myTransform = null;
     private NavMeshAgent _agent = null;
     private NavMeshPath _path = null;
@@ -108,10 +112,11 @@ public class DungeonGame_NavMeshMovement : MonoBehaviour
         return false;
     }
 
-    public void JoystickMove(Vector2 joystickDeltaOffset) => Move(joystickDeltaOffset);
+    public void JoystickMove(Vector2 joystickDeltaOffset, bool lookMove) => Move(joystickDeltaOffset, lookMove);
 
-    public void Move(Vector2 inputVector)
+    public void Move(Vector2 inputVector, bool lookMove)
     {
+        _lookMove = lookMove;
         inputVector.Normalize();
         this._inputVector.x = inputVector.x;
         this._inputVector.y = 0f;
@@ -141,8 +146,8 @@ public class DungeonGame_NavMeshMovement : MonoBehaviour
 
     private Vector3 DetermineDirectionVectorFromInputVector()
     {
-        if (Camera.main != null)
-            return (_inputVector.x * Camera.main.transform.right) + (_inputVector.z * Vector3.Scale(Camera.main.transform.forward, new Vector3(1f, 0f, 1f)).normalized);
+        if (_cameraTransform != null)
+            return (_inputVector.x * _cameraTransform.right) + (_inputVector.z * Vector3.Scale(_cameraTransform.forward, new Vector3(1f, 0f, 1f)).normalized);
         return _inputVector;
     }
 
@@ -160,10 +165,10 @@ public class DungeonGame_NavMeshMovement : MonoBehaviour
         float deltaTime = Time.deltaTime;
 
         Vector3 directionVector = _isPathing ? DetermineDirectionVectorFromAgentPath() : DetermineDirectionVectorFromInputVector();
-        //if (move while looking at LookAtPoint)
-        //    targetRotation = TargetRotationFromDirectionHelper(targetRotation, (LookAtPoint - myTransform.position).normalized);
-        //else
-        _targetRotation = TargetRotationFromDirectionHelper(_targetRotation, directionVector);
+        if (_lookMove)
+            _targetRotation = TargetRotationFromDirectionHelper(_targetRotation, (_lookAtPoint.position - _myTransform.position).normalized);
+        else
+            _targetRotation = TargetRotationFromDirectionHelper(_targetRotation, directionVector);
 
 #if UNITY_EDITOR 
         if (DebugGizmos)

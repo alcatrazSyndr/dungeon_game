@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: 37e9d67abda1fa44fa469798a6e3f462
+guid: 1ebc132b086a92c48ae708db8c20694a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: DungeonGame_HumanMale_Idle
+    second: Run Backward Left (1)
+  - first:
+      74: -277073599187486402
+    second: DungeonGame_HumanMale_Run_BackwardLeft
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,13 +39,13 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: DungeonGame_HumanMale_Idle
+      name: DungeonGame_HumanMale_Run_BackwardLeft
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 300
+      lastFrame: 15
       wrapMode: 0
-      orientationOffsetY: 36.85
+      orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
@@ -72,10 +75,10 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 0
-    importBlendShapes: 0
-    importCameras: 0
-    importLights: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
@@ -101,11 +104,11 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 2
+    normalImportMode: 0
     tangentImportMode: 2
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 2
+    blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1

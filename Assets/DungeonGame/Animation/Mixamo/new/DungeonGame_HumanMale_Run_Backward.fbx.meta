@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 2ef033db8fc03e5429af9c490d18b879
+guid: 9fbcca970405a6b4c9d61820c6cde5dd
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Running (2)
-  - first:
-      74: -9121621101649706817
-    second: DungeonGame_HumanMale_Run
+    second: DungeonGame_HumanMale_Run_Backward
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -39,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: DungeonGame_HumanMale_Run
+      name: DungeonGame_HumanMale_Run_Backward
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 21
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -105,7 +102,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 3
+    tangentImportMode: 2
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1

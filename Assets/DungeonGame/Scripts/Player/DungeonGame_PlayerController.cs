@@ -40,7 +40,7 @@ public class DungeonGame_PlayerController : MonoBehaviour
         _input.OnAttackInput.AddListener(AttackInput);
 
         // Animation Listeners
-        _animation.OnRollFinished.AddListener(RollEnd);
+        _animation.OnRollFinishedPostFrame.AddListener(RollEnd);
         _animation.OnAttackPeaked.AddListener(AttackPeak);
         _animation.OnAttackEnded.AddListener(AttackEnd);
         _animation.OnAttackPush.AddListener(AttackPush);
@@ -61,7 +61,7 @@ public class DungeonGame_PlayerController : MonoBehaviour
         _input.OnAttackInput.RemoveListener(AttackInput);
 
         // Animation Listeners
-        _animation.OnRollFinished.RemoveListener(RollEnd);
+        _animation.OnRollFinishedPostFrame.RemoveListener(RollEnd);
         _animation.OnAttackPeaked.RemoveListener(AttackPeak);
         _animation.OnAttackEnded.RemoveListener(AttackEnd);
         _animation.OnAttackPush.RemoveListener(AttackPush);
@@ -89,31 +89,17 @@ public class DungeonGame_PlayerController : MonoBehaviour
         _attackNumber++;
         if (_attackNumber > _maxAttackCombo)
             _attackNumber = 1;
-
-        _movement.JoystickMove(new Vector2(0f, 1f));
     }
 
     private void AttackPush()
     {
-        StartCoroutine(AttackPushCRT());
+        //StartCoroutine(AttackPushCRT());
     }
 
     private void AttackPeak()
     {
         _attackPushing = false;
-        StopCoroutine(AttackPushCRT());
-    }
-
-    private IEnumerator AttackPushCRT()
-    {
-        _attackPushing = true;
-        while (_attacking)
-        {
-            _movement.JoystickMove(new Vector2(0f, 10f));
-            yield return null;
-        }
-        _attackPushing = false;
-        yield break;
+        //StopCoroutine(AttackPushCRT());
     }
 
     private void AttackEnd()
@@ -145,9 +131,9 @@ public class DungeonGame_PlayerController : MonoBehaviour
         while (_rolling)
         {
             if (_movementInput == Vector2.zero)
-                _movement.JoystickMove(new Vector2(0f, 1f));
+                _movement.JoystickMove(new Vector2(0f, 1f), false);
             else
-                _movement.JoystickMove(_movementInput);
+                _movement.JoystickMove(_movementInput, false);
 
             yield return null;
         }
@@ -227,10 +213,8 @@ public class DungeonGame_PlayerController : MonoBehaviour
     {
         while (true)
         {
-            if (!InAction())
-                _movement.JoystickMove(_movementInput);
-            else if (_attacking && !_attackPushing)
-                _movement.JoystickMove(Vector2.zero);
+            if (!_rolling)
+                _movement.JoystickMove(_movementInput, _sprint > 0f ? false : true);
             yield return null;
         }
     }
