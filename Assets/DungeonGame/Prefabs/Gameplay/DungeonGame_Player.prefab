@@ -30,6 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1565376911}
+  - {fileID: 2058153837}
   m_Father: {fileID: 9084181436385700220}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c430f382484144e925c097c2d33cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0.6
   m_Data:
     m_ConstrainedObject: {fileID: 9084181436320287490}
     m_SourceObjects:
@@ -152,8 +153,8 @@ MonoBehaviour:
         transform: {fileID: 0}
         weight: 0
     m_Offset: {x: 0, y: 0, z: 0}
-    m_MinLimit: -180
-    m_MaxLimit: 180
+    m_MinLimit: -90
+    m_MaxLimit: 90
     m_AimAxis: 2
     m_UpAxis: 1
     m_WorldUpType: 0
@@ -164,6 +165,85 @@ MonoBehaviour:
       x: 1
       y: 1
       z: 1
+--- !u!1 &2058153836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2058153837}
+  - component: {fileID: 2058153838}
+  m_Layer: 0
+  m_Name: LeanRig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2058153837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058153836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 751100823}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2058153838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058153836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb90b913935e644baaa86c076d788e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 1
+  m_Data:
+    m_ConstrainedObject: {fileID: 9084181436320287490}
+    m_SourceObjects:
+      m_Length: 1
+      m_Item0:
+        transform: {fileID: 1054798419}
+        weight: 1
+      m_Item1:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item2:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item3:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item4:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item5:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item6:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item7:
+        transform: {fileID: 0}
+        weight: 0
+    m_Offset: {x: -12, y: -76.8, z: -71.5}
+    m_ConstrainedAxes:
+      x: 1
+      y: 1
+      z: 1
+    m_MaintainOffset: 0
 --- !u!1 &3276810962779242360
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +258,6 @@ GameObject:
   - component: {fileID: 5220704509660883416}
   - component: {fileID: 2523440837718717151}
   - component: {fileID: 2453903403965606549}
-  - component: {fileID: 1666020926}
   m_Layer: 0
   m_Name: DungeonGame_Player
   m_TagString: Untagged
@@ -236,18 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e67f815f959a74f868e21beb118d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAttackCombo: 2
-  _sprintMoveSpeedModifier: 4
-  _defaultMoveSpeed: 6
-  OnSprintChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnRolled:
-    m_PersistentCalls:
-      m_Calls: []
-  OnAttacked:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5220704509660883416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,25 +379,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1468223395834f428259484a40c3730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lookMove: 1
+  _lookAtPoint: {fileID: 1054798419}
+  _cameraTransform: {fileID: 1452926371097882528}
   _accelerationDamp: 0.1
-  _moveSpeed: 4
+  _moveSpeed: 6
   _defaultAgentStoppingDistance: 0.025
-  _turnSpeed: 9
+  _turnSpeed: 30
   _maxForwardAngle: 80
   _wideTurnAppliedSpeed: 0.1
   DebugGizmos: 0
---- !u!114 &1666020926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3276810962779242360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b65f428fc34fa4c4ab7315e777201657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5425644854425840407
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +547,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8487045366185733914}
     m_Modifications:
+    - target: {fileID: 7235548230172154322, guid: 639611dac34b2fe488491d3f9be8f6e9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.109
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235548230172154322, guid: 639611dac34b2fe488491d3f9be8f6e9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.051
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235548230172154322, guid: 639611dac34b2fe488491d3f9be8f6e9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.033
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235548230501617884, guid: 639611dac34b2fe488491d3f9be8f6e9,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'Wrist_L'\n\tTransform 'Elbow_L'\n\tTransform
+        'Chest_M'\n\tTransform 'Head_M'\n\tTransform 'Scapula_L'\n\tTransform 'Elbow_R'\n\tTransform
+        'Shoulder_R'\n\tTransform 'Shoulder_L'\n\tTransform 'Scapula_R'\n\tTransform
+        'Wrist_R'\n\tand more ...\n\tFrom animation clip 'Greatsword_Idle'"
+      objectReference: {fileID: 0}
     - target: {fileID: 7235548230501617885, guid: 639611dac34b2fe488491d3f9be8f6e9,
         type: 3}
       propertyPath: m_RootOrder
@@ -615,19 +698,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d3eee364836e843a488d9de0d1a1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _combatCooldown: 10
-  OnRollFinished:
-    m_PersistentCalls:
-      m_Calls: []
-  OnAttackPeaked:
-    m_PersistentCalls:
-      m_Calls: []
-  OnAttackEnded:
-    m_PersistentCalls:
-      m_Calls: []
-  OnAttackPush:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLeftCombatStance:
-    m_PersistentCalls:
-      m_Calls: []

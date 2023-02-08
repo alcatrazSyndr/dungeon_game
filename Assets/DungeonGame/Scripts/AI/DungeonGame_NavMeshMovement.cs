@@ -112,9 +112,9 @@ public class DungeonGame_NavMeshMovement : MonoBehaviour
         return false;
     }
 
-    public void JoystickMove(Vector2 joystickDeltaOffset, bool lookMove) => Move(joystickDeltaOffset, lookMove);
+    public void JoystickMove(Vector2 joystickDeltaOffset, bool lookMove = false) => Move(joystickDeltaOffset, lookMove);
 
-    public void Move(Vector2 inputVector, bool lookMove)
+    public void Move(Vector2 inputVector, bool lookMove = false)
     {
         _lookMove = lookMove;
         inputVector.Normalize();
@@ -165,7 +165,7 @@ public class DungeonGame_NavMeshMovement : MonoBehaviour
         float deltaTime = Time.deltaTime;
 
         Vector3 directionVector = _isPathing ? DetermineDirectionVectorFromAgentPath() : DetermineDirectionVectorFromInputVector();
-        if (_lookMove)
+        if (_lookMove && _lookAtPoint != null)
             _targetRotation = TargetRotationFromDirectionHelper(_targetRotation, (_lookAtPoint.position - _myTransform.position).normalized);
         else
             _targetRotation = TargetRotationFromDirectionHelper(_targetRotation, directionVector);

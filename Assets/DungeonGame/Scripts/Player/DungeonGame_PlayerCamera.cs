@@ -24,7 +24,6 @@ public class DungeonGame_PlayerCamera : MonoBehaviour
         _camera.fieldOfView = _initialCameraFOV;
 
         _input.OnLookInputChanged.AddListener(LookInput);
-        _playerController.OnSprintChanged.AddListener(SprintChanged);
     }
 
     private void OnDisable()
