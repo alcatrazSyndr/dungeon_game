@@ -10,7 +10,8 @@ public class DungeonGame_AnimatorHandler : MonoBehaviour
     private DungeonGame_NavMeshMovement _controller = null;
     private bool _isInitialized = false;
 
-    public UnityEvent OnAttackAnimationPeaked = new UnityEvent();
+    public UnityEvent OnAttackEnd = new UnityEvent();
+    public UnityEvent OnAttackPeak = new UnityEvent();
     public UnityEvent OnFootstep = new UnityEvent();
 
     #region Initialization
@@ -60,7 +61,12 @@ public class DungeonGame_AnimatorHandler : MonoBehaviour
 
     public void AttackPeak()
     {
-        OnAttackAnimationPeaked?.Invoke();
+        OnAttackPeak?.Invoke();
+    }
+
+    public void AttackEnd()
+    {
+        OnAttackEnd?.Invoke();
     }
 
     public void Footstep()

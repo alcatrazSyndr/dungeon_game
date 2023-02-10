@@ -6,21 +6,29 @@ using UnityEngine.Animations.Rigging;
 
 public class DungeonGame_PlayerAnimation : MonoBehaviour
 {
-    private Animator _animator;
-    private DungeonGame_PlayerInput _input;
+    [SerializeField] private int _maxAttackCombo = 2;
+
+    private Animator _animator = null;
+    private DungeonGame_PlayerInput _input = null;
+    private DungeonGame_AnimatorHandler _animatorHandler = null;
     private Vector2 _targetMovementInput;
     private Vector2 _movementInput;
+    private int _attack = 1;
+    private bool _inAttack = false;
 
     private void OnEnable()
     {
         _animator = transform.GetComponent<Animator>();
         _input = transform.GetComponentInParent<DungeonGame_PlayerInput>();
+        _animatorHandler = transform.GetComponentInChildren<DungeonGame_AnimatorHandler>();
 
         // Movement Listeners
         _input.OnMovementInputChanged.AddListener(MovementInputChanged);
         _input.OnMovementInputEnded.AddListener(MovementInputEnded);
         // Combat Listeners
         _input.OnAttackInput.AddListener(AttackInput);
+        // Animator Listeners
+        _animatorHandler.OnAttackEnd.AddListener(AttackEnd);
 
         StartCoroutine(MovementInputCRT());
     }
@@ -32,6 +40,8 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
         _input.OnMovementInputEnded.RemoveListener(MovementInputEnded);
         // Combat Listeners
         _input.OnAttackInput.RemoveListener(AttackInput);
+        // Animator Listeners
+        _animatorHandler.OnAttackEnd.RemoveListener(AttackEnd);
     }
 
     #region Movement
@@ -63,7 +73,18 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
 
     private void AttackInput()
     {
-        _animator.Play("Attack_" + Random.Range(1, 5));
+        if (_inAttack) return;
+
+        _inAttack = true;
+        _animator.Play("Attack_" + _attack.ToString());
+        _attack++;
+        if (_attack > _maxAttackCombo)
+            _attack = 1;
+    }
+
+    private void AttackEnd()
+    {
+        _inAttack = false;
     }
 
     #endregion
