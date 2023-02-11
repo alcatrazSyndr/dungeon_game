@@ -4,8 +4,11 @@ using UnityEngine.Events;
 
 public class DungeonGame_PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameObject _debugUI;
+
     private DungeonGame_NavMeshMovement _movement;
     private DungeonGame_PlayerInput _input;
+    private DungeonGame_EntityHealth _health;
 
     private Vector2 _movementInput;
 
@@ -22,10 +25,13 @@ public class DungeonGame_PlayerController : MonoBehaviour
     {
         _movement = transform.GetComponent<DungeonGame_NavMeshMovement>();
         _input = transform.GetComponent<DungeonGame_PlayerInput>();
+        _health = transform.GetComponent<DungeonGame_EntityHealth>();
 
         // Movement Listeners
         _input.OnMovementInputChanged.AddListener(MovementInputChanged);
         _input.OnMovementInputEnded.AddListener(MovementInputEnded);
+        // Health Listeners
+        _health.OnDeath.AddListener(PlayerDeath);
 
         StartCoroutine(MovementInputCRT());
     }
@@ -35,7 +41,8 @@ public class DungeonGame_PlayerController : MonoBehaviour
         // Movement Listeners
         _input.OnMovementInputChanged.RemoveListener(MovementInputChanged);
         _input.OnMovementInputEnded.RemoveListener(MovementInputEnded);
-
+        // Health Listeners
+        _health.OnDeath.RemoveListener(PlayerDeath);
         // Game Manager Listeners
         if (DungeonGame_GameManager.Instance != null)
         {
@@ -58,6 +65,14 @@ public class DungeonGame_PlayerController : MonoBehaviour
         }
 
         StopAllCoroutines();
+    }
+
+    private void PlayerDeath()
+    {
+        DungeonGame_GameManager.Instance.OnPlayerControllerDisabled?.Invoke(this);
+
+        _debugUI.SetActive(false);
+        Destroy(gameObject);
     }
 
     #region Movement

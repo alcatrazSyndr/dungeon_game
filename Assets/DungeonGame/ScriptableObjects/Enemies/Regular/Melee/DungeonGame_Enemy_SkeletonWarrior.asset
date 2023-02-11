@@ -18,3 +18,5 @@ MonoBehaviour:
   ViewRange: 10
   AttackRange: 1.5
   MovementSpeed: 1
+  AttackCooldown: 0.5
+  BaseAttackDamage: 10

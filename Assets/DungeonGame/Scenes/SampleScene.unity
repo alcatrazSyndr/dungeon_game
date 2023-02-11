@@ -645,6 +645,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonGame_Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7426836820356024250, guid: 719e6f341ddb28d40baa05af1a1de1dc,
+        type: 3}
+      propertyPath: _debugUI
+      value: 
+      objectReference: {fileID: 1616677000}
     - target: {fileID: 8487045366185733914, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
       propertyPath: m_RootOrder

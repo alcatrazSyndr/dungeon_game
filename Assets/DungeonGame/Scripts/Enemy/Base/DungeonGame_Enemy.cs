@@ -16,6 +16,7 @@ public class DungeonGame_Enemy : MonoBehaviour
     protected Animator _animator = null;
     protected float _viewRange;
     protected float _attackRange;
+    protected float _attackDamage;
     protected float _distanceToTarget = 100f;
     protected float _attackCooldown;
     protected bool _inAttack = false;
@@ -33,10 +34,13 @@ public class DungeonGame_Enemy : MonoBehaviour
         _movement.SetMovementSpeed(_movement.GetMoveSpeed() * _myEnemyType.MovementSpeed);
         _viewRange = _myEnemyType.ViewRange;
         _attackRange = _myEnemyType.AttackRange;
+        _attackDamage = _myEnemyType.BaseAttackDamage;
         _attackCooldown = 0f;
 
         _animatorHandler.OnAttackEnd.AddListener(AttackEnd);
         _animatorHandler.OnAttackPeak.AddListener(AttackPeak);
+
+        OnEnemyEnabled();
 
         StartCoroutine(BrainCRT());
     }
@@ -69,7 +73,7 @@ public class DungeonGame_Enemy : MonoBehaviour
         yield break;
     }
 
-    protected void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, _viewRange);
@@ -148,6 +152,8 @@ public class DungeonGame_Enemy : MonoBehaviour
     protected virtual void BehaviourOnTargetInAttackRange() { }
 
     protected virtual void BehaviourOnTargetOutsideAttackRange() { }
+
+    protected virtual void OnEnemyEnabled() { }
 
     protected virtual void AttackPeak() { }
 

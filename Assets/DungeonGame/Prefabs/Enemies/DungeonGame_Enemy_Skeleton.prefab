@@ -17,9 +17,10 @@ GameObject:
   - component: {fileID: 508329193}
   - component: {fileID: 312360352703735926}
   - component: {fileID: 4648291521772290986}
+  - component: {fileID: 1399702459}
   m_Layer: 6
   m_Name: DungeonGame_Enemy_Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,6 +216,53 @@ MonoBehaviour:
   OnBrainShutoff:
     m_PersistentCalls:
       m_Calls: []
+  _attackSwingRange: 0.85
+  _attackHitVFX: {fileID: 4491681608301920529, guid: 37ce903611e4d0843a3a248e9c94c219,
+    type: 3}
+  _attackSourceTransform: {fileID: 3331032194364920077}
+--- !u!114 &1399702459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881813814399980488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc5d7ab4a7119541b35aaa27e750751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8997483984192202654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3331032194364920077}
+  m_Layer: 0
+  m_Name: MeleeAttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3331032194364920077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8997483984192202654}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.96, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 514511279291680930}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6100358311216927883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -394,6 +442,12 @@ SkinnedMeshRenderer:
 --- !u!4 &514096891727453430 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6777870179777212359, guid: dd06363efa505b0409f06eea08c44f1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6425974086821311281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &514511279291680930 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6777438236534225811, guid: dd06363efa505b0409f06eea08c44f1b,
     type: 3}
   m_PrefabInstance: {fileID: 6425974086821311281}
   m_PrefabAsset: {fileID: 0}

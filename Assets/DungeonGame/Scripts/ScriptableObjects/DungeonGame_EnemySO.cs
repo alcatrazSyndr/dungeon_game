@@ -12,4 +12,5 @@ public class DungeonGame_EnemySO : ScriptableObject
     public float AttackRange = 1f;
     public float MovementSpeed = 1f;
     public float AttackCooldown = 0f;
+    public float BaseAttackDamage = 0f;
 }

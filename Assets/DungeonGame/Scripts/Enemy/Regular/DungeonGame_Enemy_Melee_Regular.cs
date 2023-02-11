@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class DungeonGame_Enemy_Melee_Regular : DungeonGame_Enemy
 {
+    [SerializeField] private float _attackSwingRange = 1f;
+    [SerializeField] private GameObject _attackHitVFX;
+    [SerializeField] private Transform _attackSourceTransform;
+
+    private DungeonGame_EntityCombat_MeleeAttack_Basic _meleeBasicAttack = null;
+
+    protected override void OnEnemyEnabled()
+    {
+        _meleeBasicAttack = transform.GetComponent<DungeonGame_EntityCombat_MeleeAttack_Basic>();
+    }
+
     protected override void BehaviourOnTargetInAttackRange()
     {
         //print("starting attack");
@@ -23,5 +34,13 @@ public class DungeonGame_Enemy_Melee_Regular : DungeonGame_Enemy
     protected override void AttackPeak()
     {
         //print("attack peak");
+        _meleeBasicAttack.Attack(_attackSwingRange, _attackDamage, _attackSourceTransform, _attackHitVFX);
+    }
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(_attackSourceTransform.position, _attackSwingRange);
     }
 }
