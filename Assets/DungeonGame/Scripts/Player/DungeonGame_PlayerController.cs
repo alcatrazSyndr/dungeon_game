@@ -9,6 +9,15 @@ public class DungeonGame_PlayerController : MonoBehaviour
 
     private Vector2 _movementInput;
 
+    private void Start()
+    {
+        // Game Manager Listeners
+        if (DungeonGame_GameManager.Instance != null)
+        {
+            DungeonGame_GameManager.Instance.OnPlayerControllerEnabled?.Invoke(this);
+        }
+    }
+
     private void OnEnable()
     {
         _movement = transform.GetComponent<DungeonGame_NavMeshMovement>();
@@ -17,12 +26,6 @@ public class DungeonGame_PlayerController : MonoBehaviour
         // Movement Listeners
         _input.OnMovementInputChanged.AddListener(MovementInputChanged);
         _input.OnMovementInputEnded.AddListener(MovementInputEnded);
-
-        // Game Manager Listeners
-        if (DungeonGame_GameManager.Instance != null)
-        {
-            DungeonGame_GameManager.Instance.OnPlayerControllerEnabled?.Invoke(this);
-        }
 
         StartCoroutine(MovementInputCRT());
     }

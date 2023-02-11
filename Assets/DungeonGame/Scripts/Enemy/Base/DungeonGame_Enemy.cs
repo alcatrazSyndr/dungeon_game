@@ -104,6 +104,7 @@ public class DungeonGame_Enemy : MonoBehaviour
         {
             if (_distanceToTarget <= _attackRange && _attackCooldown <= 0f)
             {
+                _movement.StopAgent();
                 BehaviourOnTargetInAttackRange();
             }
             else
@@ -166,6 +167,7 @@ public class DungeonGame_Enemy : MonoBehaviour
                 _movement.RotateTowards(_currentTarget);
             }
             _attackCooldown -= Time.fixedDeltaTime * Time.timeScale;
+            yield return null;
         }
         yield break;
     }
