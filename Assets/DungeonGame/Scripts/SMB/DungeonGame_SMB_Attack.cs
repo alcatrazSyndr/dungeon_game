@@ -19,7 +19,8 @@ public class DungeonGame_SMB_Attack : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.GetComponent<DungeonGame_AnimatorHandler>().OnAttackEnd?.Invoke();
+        if (animator.transform.GetComponent<DungeonGame_AnimatorHandler>())
+            animator.transform.GetComponent<DungeonGame_AnimatorHandler>().OnAttackEnd?.Invoke();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

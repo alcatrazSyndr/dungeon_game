@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2711574058357935427}
   - component: {fileID: 3902268963750896267}
   - component: {fileID: 3880717023437834994}
-  - component: {fileID: 2619864181398148183}
   - component: {fileID: 8556831932952561018}
   - component: {fileID: 3489597458632153919}
   - component: {fileID: 8800785304374627492}
   - component: {fileID: 508329193}
   - component: {fileID: 312360352703735926}
+  - component: {fileID: 4648291521772290986}
   m_Layer: 6
   m_Name: DungeonGame_Enemy_Skeleton
   m_TagString: Untagged
@@ -85,19 +85,6 @@ MonoBehaviour:
   _maxForwardAngle: 80
   _wideTurnAppliedSpeed: 0.1
   DebugGizmos: 0
---- !u!114 &2619864181398148183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7881813814399980488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 132e98b37fcd0fb4dba2dc38f5f3b85d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerDebug: {fileID: 0}
 --- !u!136 &8556831932952561018
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -210,6 +197,24 @@ MonoBehaviour:
   - {fileID: 492553387286566828}
   _normalColor: {r: 0, g: 0, b: 0, a: 0}
   _hurtColor: {r: 1, g: 0, b: 0, a: 0}
+--- !u!114 &4648291521772290986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881813814399980488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e84fc21f6b94647a84431d0bf6fe57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myEnemyType: {fileID: 11400000, guid: 4b6c3ee0ddacc2c49ba56b604ec5d1e7, type: 2}
+  _brainTick: 0.5
+  _maxAttackCombo: 2
+  OnBrainShutoff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &6100358311216927883
 PrefabInstance:
   m_ObjectHideFlags: 0

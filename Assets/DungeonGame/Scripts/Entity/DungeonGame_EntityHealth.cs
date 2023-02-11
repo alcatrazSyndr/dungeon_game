@@ -37,4 +37,11 @@ public class DungeonGame_EntityHealth : MonoBehaviour
             OnDeath?.Invoke();
         }
     }
+
+    public void SetInitialHealth(float newHealth)
+    {
+        _maxHealth = newHealth;
+        _health = _maxHealth;
+        OnHealthChanged?.Invoke(1f);
+    }
 }

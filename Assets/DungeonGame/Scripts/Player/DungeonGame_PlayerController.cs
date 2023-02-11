@@ -18,6 +18,12 @@ public class DungeonGame_PlayerController : MonoBehaviour
         _input.OnMovementInputChanged.AddListener(MovementInputChanged);
         _input.OnMovementInputEnded.AddListener(MovementInputEnded);
 
+        // Game Manager Listeners
+        if (DungeonGame_GameManager.Instance != null)
+        {
+            DungeonGame_GameManager.Instance.OnPlayerControllerEnabled?.Invoke(this);
+        }
+
         StartCoroutine(MovementInputCRT());
     }
 
@@ -26,6 +32,27 @@ public class DungeonGame_PlayerController : MonoBehaviour
         // Movement Listeners
         _input.OnMovementInputChanged.RemoveListener(MovementInputChanged);
         _input.OnMovementInputEnded.RemoveListener(MovementInputEnded);
+
+        // Game Manager Listeners
+        if (DungeonGame_GameManager.Instance != null)
+        {
+            DungeonGame_GameManager.Instance.OnPlayerControllerDisabled?.Invoke(this);
+        }
+
+        StopAllCoroutines();
+    }
+
+    private void OnDestroy()
+    {
+        // Movement Listeners
+        _input.OnMovementInputChanged.RemoveListener(MovementInputChanged);
+        _input.OnMovementInputEnded.RemoveListener(MovementInputEnded);
+
+        // Game Manager Listeners
+        if (DungeonGame_GameManager.Instance != null)
+        {
+            DungeonGame_GameManager.Instance.OnPlayerControllerDisabled?.Invoke(this);
+        }
 
         StopAllCoroutines();
     }
