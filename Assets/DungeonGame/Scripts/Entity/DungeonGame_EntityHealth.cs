@@ -27,15 +27,14 @@ public class DungeonGame_EntityHealth : MonoBehaviour
         if (!_alive) return;
 
         _health += offset;
+        OnHealthChanged?.Invoke(offset);
+
         if (_health <= 0f)
         {
             _health = 0f;
             _alive = false;
+
             OnDeath?.Invoke();
-        }
-        else
-        {
-            OnHealthChanged?.Invoke(offset);
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DungeonGame_PlayerCombat : MonoBehaviour
 {
+    [SerializeField] private GameObject _damageSplashVFX;
     [SerializeField] private Transform _chestTransform;
     [SerializeField] private float _attackRange = 1f;
     [SerializeField] private float _debugDamage = 20f;
@@ -32,7 +33,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     {
         if (_myHealth == null && !_myHealth.Alive()) return;
 
-        bool didHit = false;
+        //bool didHit = false;
         Collider[] inAttackCollider = Physics.OverlapSphere(_chestTransform.position + (_chestTransform.up * 0.8f), _attackRange, _entityLayer.value, QueryTriggerInteraction.Collide);
         if (inAttackCollider.Length > 0)
         {
@@ -43,13 +44,14 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
                 if (entityHealth == _myHealth) continue;
                 if (!entityHealth.Alive()) continue;
 
-                didHit = true;
+                //didHit = true;
                 entityHealth.ChangeHealth(-_debugDamage);
+                Instantiate(_damageSplashVFX, entityHealth.transform.position + new Vector3(0f, 0.9f, 0f), Quaternion.identity);
             }
         }
 
-        if (didHit)
-            StartCoroutine(AttackLockCRT());
+        //if (didHit)
+            //StartCoroutine(AttackLockCRT());
     }
 
     private IEnumerator AttackLockCRT()

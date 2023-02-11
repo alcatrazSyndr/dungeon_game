@@ -1756,6 +1756,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 492553387286566828, guid: d4d20aeef5474554499bd4cd882c3475,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8aeeca0b2c2b19a4db4983b729fec3e2, type: 2}
+    - target: {fileID: 531631178145560938, guid: d4d20aeef5474554499bd4cd882c3475,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff5d34f25565f494fbed3a83579eb4e4, type: 2}
+    - target: {fileID: 531713760336863504, guid: d4d20aeef5474554499bd4cd882c3475,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a9df5b4ddf34cb94383c7c6ad7e5af31, type: 2}
+    - target: {fileID: 531784511572943154, guid: d4d20aeef5474554499bd4cd882c3475,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8aeeca0b2c2b19a4db4983b729fec3e2, type: 2}
     - target: {fileID: 2619864181398148183, guid: d4d20aeef5474554499bd4cd882c3475,
         type: 3}
       propertyPath: _playerDebug

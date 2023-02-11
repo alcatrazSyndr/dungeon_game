@@ -37,8 +37,12 @@ public class DungeonGame_EntityDeathDissolve : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         float interpolation = 0f;
         float timer = 0f;
+        Vector3 pos = transform.position;
+        Quaternion rot = transform.rotation;
         while (timer < _dissolveTime)
         {
+            transform.position = pos;
+            transform.rotation = rot;
             interpolation = timer / _dissolveTime;
             interpolation = Mathf.Clamp01(interpolation);
             SetDissolve(_dissolveCurve.Evaluate(interpolation));

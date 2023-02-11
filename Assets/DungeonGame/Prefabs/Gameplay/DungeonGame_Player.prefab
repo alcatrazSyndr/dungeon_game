@@ -72,7 +72,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054798418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.017}
+  m_LocalPosition: {x: -0.35, y: 0, z: 3.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -305,7 +305,7 @@ MonoBehaviour:
   _camera: {fileID: 3379970134555826836}
   _cameraMaxAngle: 80
   _cameraMinAngle: 320
-  _initialCameraFOV: 38
+  _initialCameraFOV: 45
   _sprintCameraFOVModifier: 5
 --- !u!114 &7426836820356024250
 MonoBehaviour:
@@ -438,6 +438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afff4512d72186042b58d2cb4a01b850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageSplashVFX: {fileID: 4491681608301920529, guid: 37ce903611e4d0843a3a248e9c94c219,
+    type: 3}
   _chestTransform: {fileID: 9084181436041875208}
   _attackRange: 1
   _debugDamage: 20
@@ -520,7 +522,7 @@ PrefabInstance:
     - target: {fileID: 3379970133996501349, guid: 80469d9b326ce96468aef45defcd3ffb,
         type: 3}
       propertyPath: field of view
-      value: 38
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3379970133996501350, guid: 80469d9b326ce96468aef45defcd3ffb,
         type: 3}

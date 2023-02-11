@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3489597458632153919}
   - component: {fileID: 8800785304374627492}
   - component: {fileID: 508329193}
+  - component: {fileID: 312360352703735926}
   m_Layer: 6
   m_Name: DungeonGame_Enemy_Skeleton
   m_TagString: Untagged
@@ -188,7 +189,27 @@ MonoBehaviour:
   - {fileID: 531784511572943154}
   _skinnedMeshRenderers:
   - {fileID: 492553387286566828}
-  _dissolveTime: 0.75
+  _dissolveTime: 1
+--- !u!114 &312360352703735926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881813814399980488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c56071d5a31f44bbb864f59fcc1ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderers:
+  - {fileID: 531784511572943154}
+  - {fileID: 531631178145560938}
+  - {fileID: 531713760336863504}
+  _skinnedMeshRenderers:
+  - {fileID: 492553387286566828}
+  _normalColor: {r: 0, g: 0, b: 0, a: 0}
+  _hurtColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1001 &6100358311216927883
 PrefabInstance:
   m_ObjectHideFlags: 0

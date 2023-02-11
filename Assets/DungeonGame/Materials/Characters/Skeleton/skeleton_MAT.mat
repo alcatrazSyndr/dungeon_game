@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: skeleton_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: 2c6e52535f17dfc4b8e0bb3d1e91aea4,
+  m_Shader: {fileID: -6465566751694194690, guid: 28d959e39f9a8d64f80fcf83bae903f1,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -78,6 +78,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RGB_SpecularMap_A_Smoothness:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _R_Metallic_G_Occulsion_A_Smoothness:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -127,13 +131,14 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Shininess: 1
-    - _Smoothness: 0.223
+    - _Smoothness: 0
     - _SmoothnessSource: 1
     - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 1
     - _Surface: 0
+    - _UseSpecularMap: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -145,5 +150,6 @@ Material:
     - _NoiseUVSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _Offest: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecularColor: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
