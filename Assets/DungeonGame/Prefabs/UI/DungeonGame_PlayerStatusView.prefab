@@ -48,6 +48,7 @@ MonoBehaviour:
   _canvas: {fileID: 8651503917661239884}
   _healthCircle: {fileID: 7160119944100192143}
   _localPlayerDebug: 1
+  _healthTweenTime: 0.1
 --- !u!1 &5532622789120708820
 GameObject:
   m_ObjectHideFlags: 0

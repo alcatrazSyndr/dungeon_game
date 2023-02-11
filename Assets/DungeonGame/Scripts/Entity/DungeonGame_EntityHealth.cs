@@ -1,5 +1,43 @@
 using UnityEngine;
 using UnityEngine.Events;
+#if UNITY_EDITOR
+using UnityEditor;
+
+[CustomEditor(typeof(DungeonGame_EntityHealth))]
+public class EntityHealthEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        DungeonGame_EntityHealth myScript = (DungeonGame_EntityHealth)target;
+        if (GUILayout.Button("Heal 10"))
+        {
+            myScript.HealthDebug(10f);
+        }
+        if (GUILayout.Button("Heal 20"))
+        {
+            myScript.HealthDebug(20f);
+        }
+        if (GUILayout.Button("Heal 1000000"))
+        {
+            myScript.HealthDebug(1000000f);
+        }
+        if (GUILayout.Button("Damage 10"))
+        {
+            myScript.HealthDebug(-10f);
+        }
+        if (GUILayout.Button("Damage 20"))
+        {
+            myScript.HealthDebug(-20f);
+        }
+        if (GUILayout.Button("Damage 1000000"))
+        {
+            myScript.HealthDebug(-1000000f);
+        }
+    }
+}
+#endif
 
 [RequireComponent(typeof(Collider))]
 public class DungeonGame_EntityHealth : MonoBehaviour
@@ -27,6 +65,7 @@ public class DungeonGame_EntityHealth : MonoBehaviour
         if (!_alive) return;
 
         _health += offset;
+        _health = Mathf.Clamp(_health, 0f, _maxHealth);
         OnHealthChanged?.Invoke(offset);
 
         if (_health <= 0f)
@@ -43,5 +82,10 @@ public class DungeonGame_EntityHealth : MonoBehaviour
         _maxHealth = newHealth;
         _health = _maxHealth;
         OnHealthChanged?.Invoke(1f);
+    }
+
+    public void HealthDebug(float heal)
+    {
+        ChangeHealth(heal);
     }
 }
