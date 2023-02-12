@@ -97,7 +97,7 @@ public class DungeonGame_Enemy : MonoBehaviour
         }
     }
 
-    protected void BehaviourOnHasTarget()
+    protected virtual void BehaviourOnHasTarget()
     {
         if (_inAttack)
         {

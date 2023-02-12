@@ -4882,7 +4882,7 @@ GameObject:
   - component: {fileID: 4491681608301920530}
   - component: {fileID: 4491681608301920531}
   m_Layer: 0
-  m_Name: DungeonGame_VFX_DamageSplash
+  m_Name: DungeonGame_VFX_DamageSplash_White
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5040,7 +5040,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5094,7 +5094,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.57701457, b: 0, a: 1}
+      maxColor: {r: 0.7735849, g: 0.73344606, b: 0.73344606, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

@@ -211,13 +211,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myEnemyType: {fileID: 11400000, guid: 4b6c3ee0ddacc2c49ba56b604ec5d1e7, type: 2}
-  _brainTick: 0.5
+  _brainTick: 0.1
   _maxAttackCombo: 2
   OnBrainShutoff:
     m_PersistentCalls:
       m_Calls: []
   _attackSwingRange: 0.85
-  _attackHitVFX: {fileID: 4491681608301920529, guid: 37ce903611e4d0843a3a248e9c94c219,
+  _attackHitVFX: {fileID: 4491681608301920529, guid: feb79a156d5cb4342a8f0c16f82c0949,
     type: 3}
   _attackSourceTransform: {fileID: 3331032194364920077}
 --- !u!114 &1399702459
