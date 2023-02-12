@@ -50,7 +50,7 @@ MonoBehaviour:
   _collisionLayer:
     serializedVersion: 2
     m_Bits: 2147483647
-  _projectileSpeed: 15
+  _projectileSpeed: 35
   _projectileSize: 0.1
 --- !u!1001 &2207792658325524635
 PrefabInstance:

@@ -11,6 +11,18 @@ public class DungeonGame_Enemy_Projectile : MonoBehaviour
     protected string _owner = string.Empty;
     protected float _damage = 0f;
     protected GameObject _hitVFXPrefab;
+    protected bool _initialized = false;
+
+    private void FixedUpdate()
+    {
+        if (!_initialized) return;
+
+        transform.position += transform.forward * Time.fixedDeltaTime * Time.timeScale * _projectileSpeed;
+        if (CheckCollision())
+        {
+            CheckCollisionsWithEntities();
+        }
+    }
 
     public void EnableProjectile(string owner, Vector3 dir, float damage, GameObject hitVFXPrefab)
     {
@@ -18,20 +30,7 @@ public class DungeonGame_Enemy_Projectile : MonoBehaviour
         _owner = owner;
         _damage = damage;
         _hitVFXPrefab = hitVFXPrefab;
-        StartCoroutine(ProjectileFlightCRT());
-    }
-
-    protected IEnumerator ProjectileFlightCRT()
-    {
-        while (true)
-        {
-            transform.position += transform.forward * Time.fixedDeltaTime * Time.timeScale * _projectileSpeed;
-            if (CheckCollision())
-            {
-                CheckCollisionsWithEntities();
-            }
-            yield return null;
-        }
+        _initialized = true;
     }
 
     protected bool CheckCollision()

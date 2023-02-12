@@ -40,6 +40,11 @@ public class DungeonGame_Enemy : MonoBehaviour
         _animatorHandler.OnAttackEnd.AddListener(AttackEnd);
         _animatorHandler.OnAttackPeak.AddListener(AttackPeak);
 
+        if (transform.GetComponentInChildren<DungeonGame_EntityInfoView>())
+        {
+            transform.GetComponentInChildren<DungeonGame_EntityInfoView>().UpdateInfoView(_myEnemyType.Name, 1);
+        }
+
         OnEnemyEnabled();
 
         StartCoroutine(BrainCRT());
