@@ -191,7 +191,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DungeonGame_Character_Skeleton_AC
+  m_Name: DungeonGame_Character_SkeletonWarrior_AC
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Speed
