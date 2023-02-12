@@ -8,6 +8,7 @@ public class DungeonGame_EntityHealthView : MonoBehaviour
     [SerializeField] private Transform _canvas;
     [SerializeField] private Slider _healthSlider;
     [SerializeField] private bool _localPlayerDebug = false;
+    [SerializeField] private float _healthTweenTime = 0.1f;
 
     private DungeonGame_EntityHealth _health = null;
 
@@ -46,7 +47,33 @@ public class DungeonGame_EntityHealthView : MonoBehaviour
         if (_health.Alive() && !_canvas.gameObject.activeSelf && !_localPlayerDebug)
             _canvas.gameObject.SetActive(true);
 
-        _healthSlider.value = _health.Health() / _health.MaxHealth();
+        float targetFillAmount = _health.Health() / _health.MaxHealth();
+        if (_canvas.gameObject.activeSelf)
+        {
+            StopAllCoroutines();
+            StartCoroutine(HealthChangeCRT(targetFillAmount));
+        }
+        else
+        {
+            _healthSlider.value = targetFillAmount;
+        }
+    }
+
+    private IEnumerator HealthChangeCRT(float target)
+    {
+        float interpolation = 1f;
+        float currentFillAmount = _healthSlider.value;
+        float fillDifference = currentFillAmount - target;
+        float timer = _healthTweenTime;
+        while (timer > 0f)
+        {
+            interpolation = timer / _healthTweenTime;
+            _healthSlider.value = target + (fillDifference * interpolation);
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        _healthSlider.value = target;
+        yield break;
     }
 
     private void Death()
