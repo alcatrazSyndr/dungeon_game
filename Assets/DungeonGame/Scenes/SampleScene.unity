@@ -734,35 +734,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2495506585948777895, guid: 719e6f341ddb28d40baa05af1a1de1dc,
+    - target: {fileID: 507859260445180211, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2495506585948777895, guid: 719e6f341ddb28d40baa05af1a1de1dc,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2495506585948777895, guid: 719e6f341ddb28d40baa05af1a1de1dc,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: _debugPlayerUI
+      value: 
+      objectReference: {fileID: 1616677000}
     - target: {fileID: 3276810962779242360, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
       propertyPath: m_Name
       value: DungeonGame_Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5911512738918671899, guid: 719e6f341ddb28d40baa05af1a1de1dc,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5911512738918671899, guid: 719e6f341ddb28d40baa05af1a1de1dc,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7426836820356024250, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
@@ -2544,6 +2524,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 909953650211804930, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909953650211804930, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3483569604857235940, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
         type: 3}
       propertyPath: m_RootOrder
@@ -2603,6 +2593,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DungeonGame_Enemy_SkeletonArcher (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937663396201864382, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937663396201864382, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937663396201864382, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d5e30d22ae969742ab6c599f4dc1f1d, type: 3}
@@ -2984,6 +2989,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 909953650211804930, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909953650211804930, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3483569604857235940, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
         type: 3}
       propertyPath: m_RootOrder
@@ -3043,6 +3058,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DungeonGame_Enemy_SkeletonArcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937663396201864382, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937663396201864382, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937663396201864382, guid: 3d5e30d22ae969742ab6c599f4dc1f1d,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d5e30d22ae969742ab6c599f4dc1f1d, type: 3}

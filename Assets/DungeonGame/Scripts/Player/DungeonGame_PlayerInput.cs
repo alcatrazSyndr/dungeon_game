@@ -12,6 +12,7 @@ public class DungeonGame_PlayerInput : MonoBehaviour
     private InputAction _sprint;
     private InputAction _roll;
     private InputAction _attack;
+    private InputAction _menu;
 
     // Movement Events
     public UnityEvent<Vector2> OnMovementInputChanged = new UnityEvent<Vector2>();
@@ -28,6 +29,9 @@ public class DungeonGame_PlayerInput : MonoBehaviour
 
     // Combat Events
     public UnityEvent OnAttackInput = new UnityEvent();
+
+    // Menu Events
+    public UnityEvent OnMenuInput = new UnityEvent();
 
     private void Awake()
     {
@@ -62,6 +66,11 @@ public class DungeonGame_PlayerInput : MonoBehaviour
         _attack = _playerControls.Player.Fire;
         _attack.Enable();
         _attack.performed += ((InputAction.CallbackContext context) => OnAttackInput?.Invoke());
+
+        // Menu Input
+        _menu = _playerControls.Player.ToggleMenu;
+        _menu.Enable();
+        _menu.performed += ((InputAction.CallbackContext context) => OnMenuInput?.Invoke());
     }
 
     private void OnDisable()
@@ -71,5 +80,6 @@ public class DungeonGame_PlayerInput : MonoBehaviour
         _sprint.Disable();
         _roll.Disable();
         _attack.Disable();
+        _menu.Disable();
     }
 }

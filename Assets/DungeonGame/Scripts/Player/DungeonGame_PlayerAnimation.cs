@@ -11,16 +11,19 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
     private Animator _animator = null;
     private DungeonGame_PlayerInput _input = null;
     private DungeonGame_AnimatorHandler _animatorHandler = null;
+    private DungeonGame_PlayerMenuViewController _menuView = null;
     private Vector2 _targetMovementInput;
     private Vector2 _movementInput;
     private int _attack = 1;
     private bool _inAttack = false;
+    private bool _actionBlock = false;
 
     private void OnEnable()
     {
         _animator = transform.GetComponent<Animator>();
         _input = transform.GetComponentInParent<DungeonGame_PlayerInput>();
         _animatorHandler = transform.GetComponentInChildren<DungeonGame_AnimatorHandler>();
+        _menuView = transform.parent.GetComponentInChildren<DungeonGame_PlayerMenuViewController>();
 
         // Movement Listeners
         _input.OnMovementInputChanged.AddListener(MovementInputChanged);
@@ -29,6 +32,8 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
         _input.OnAttackInput.AddListener(AttackInput);
         // Animator Listeners
         _animatorHandler.OnAttackEnd.AddListener(AttackEnd);
+        // Menu Listeners
+        _menuView.OnMenuToggled.AddListener(ToggleActionInput);
 
         StartCoroutine(MovementInputCRT());
     }
@@ -42,6 +47,8 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
         _input.OnAttackInput.RemoveListener(AttackInput);
         // Animator Listeners
         _animatorHandler.OnAttackEnd.RemoveListener(AttackEnd);
+        // Menu Listeners
+        _menuView.OnMenuToggled.RemoveListener(ToggleActionInput);
     }
 
     #region Movement
@@ -73,7 +80,7 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
 
     private void AttackInput()
     {
-        if (_inAttack) return;
+        if (_inAttack || _actionBlock) return;
 
         _inAttack = true;
         _animator.Play("Attack_" + _attack.ToString());
@@ -88,4 +95,9 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
     }
 
     #endregion
+
+    private void ToggleActionInput(bool toggle)
+    {
+        _actionBlock = toggle;
+    }
 }

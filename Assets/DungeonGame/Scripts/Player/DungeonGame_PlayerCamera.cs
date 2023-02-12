@@ -15,6 +15,7 @@ public class DungeonGame_PlayerCamera : MonoBehaviour
     [SerializeField] private float _sprintCameraFOVModifier = 10f;
 
     private Vector3 _originalOffset = Vector3.zero;
+    private bool _lookInputBlock = false;
 
     private void OnEnable()
     {
@@ -24,11 +25,17 @@ public class DungeonGame_PlayerCamera : MonoBehaviour
         _camera.fieldOfView = _initialCameraFOV;
 
         _input.OnLookInputChanged.AddListener(LookInput);
+
+        if (transform.GetComponentInChildren<DungeonGame_PlayerMenuViewController>())
+            transform.GetComponentInChildren<DungeonGame_PlayerMenuViewController>().OnMenuToggled.AddListener(ToggleLookInput);
     }
 
     private void OnDisable()
     {
         _input.OnLookInputChanged.RemoveListener(LookInput);
+
+        if (transform.GetComponentInChildren<DungeonGame_PlayerMenuViewController>())
+            transform.GetComponentInChildren<DungeonGame_PlayerMenuViewController>().OnMenuToggled.RemoveListener(ToggleLookInput);
     }
 
     private void Update()
@@ -38,6 +45,8 @@ public class DungeonGame_PlayerCamera : MonoBehaviour
 
     private void LookInput(Vector2 input)
     {
+        if (_lookInputBlock) return;
+
         // Vertical Axis Rotation
         Vector3 rootRotation = _cameraRoot.eulerAngles;
         rootRotation.y += (input.x * 0.1f);
@@ -48,6 +57,11 @@ public class DungeonGame_PlayerCamera : MonoBehaviour
         offsetRotation.x += (-input.y * 0.1f);
         offsetRotation.x = ClampCameraAngle(offsetRotation.x);
         _cameraOffset.localEulerAngles = offsetRotation;
+    }
+
+    private void ToggleLookInput(bool toggle)
+    {
+        _lookInputBlock = toggle;
     }
 
     private float ClampCameraAngle(float wantedCameraRotation)

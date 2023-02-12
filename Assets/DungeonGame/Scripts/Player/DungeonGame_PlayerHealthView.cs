@@ -18,7 +18,8 @@ public class DungeonGame_PlayerHealthView : MonoBehaviour
         if (_health == null) return;
         if (Camera.main == null) return;
 
-        _canvas.LookAt(Camera.main.transform);
+        Quaternion targetRot = Quaternion.LookRotation(-(Camera.main.transform.position - _canvas.position), Camera.main.transform.up);
+        _canvas.rotation = Quaternion.Lerp(_canvas.rotation, targetRot, Time.deltaTime * 20f);
     }
 
     private void OnEnable()
