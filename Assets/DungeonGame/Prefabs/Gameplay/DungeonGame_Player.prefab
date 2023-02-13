@@ -794,21 +794,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonGame_PlayerStatusView
       objectReference: {fileID: 0}
-    - target: {fileID: 5532622789120708820, guid: c41068f4d1a27c34295ff9315998b0bd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7160119944100192142, guid: c41068f4d1a27c34295ff9315998b0bd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 7160119944100192142, guid: c41068f4d1a27c34295ff9315998b0bd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.68
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c41068f4d1a27c34295ff9315998b0bd, type: 3}
 --- !u!4 &4054561021971873147 stripped
