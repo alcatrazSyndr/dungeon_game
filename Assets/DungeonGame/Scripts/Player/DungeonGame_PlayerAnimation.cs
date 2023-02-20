@@ -94,6 +94,11 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
         _inAttack = false;
     }
 
+    public void SetWeaponAnimationValue(float value)
+    {
+        _animator.SetFloat("WeaponType", value);
+    }
+
     #endregion
 
     private void ToggleActionInput(bool toggle)

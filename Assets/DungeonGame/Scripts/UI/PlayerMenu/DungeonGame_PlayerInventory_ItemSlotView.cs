@@ -1,22 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
-public class DungeonGame_PlayerMenu_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class DungeonGame_PlayerInventory_ItemSlotView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    [SerializeField] private Image _icon;
     [SerializeField] private float _tweenTime = 0.1f;
+    [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private GameObject _contextMenu;
 
+    private DungeonGame_PlayerInventoryController _inventoryController;
+    private DungeonGame_Item _myItem = null;
     private Vector2 _originalSize = Vector2.zero;
     private Vector2 _bigSize = Vector2.zero;
-    private RectTransform _rectTransform = null;
 
-    private void Start()
+    public void Initialize(DungeonGame_Item newItem, DungeonGame_PlayerInventoryController inventoryController)
     {
-        _rectTransform = transform.GetComponent<RectTransform>();
         _originalSize = _rectTransform.sizeDelta;
-        _bigSize = _originalSize * 1.1f;
+        _bigSize = _originalSize * 1.3f;
+
+        _icon.sprite = newItem.ItemIcon;
+        _icon.gameObject.SetActive(true);
+
+        _myItem = newItem;
+        _inventoryController = inventoryController;
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        ToggleContextMenu(false);
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+        ToggleContextMenu(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -29,6 +52,12 @@ public class DungeonGame_PlayerMenu_Button : MonoBehaviour, IPointerEnterHandler
     {
         StopAllCoroutines();
         StartCoroutine(SizeTweenCRT(false));
+        ToggleContextMenu(false);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ToggleContextMenu(true);
     }
 
     private IEnumerator SizeTweenCRT(bool big)
@@ -51,20 +80,15 @@ public class DungeonGame_PlayerMenu_Button : MonoBehaviour, IPointerEnterHandler
         yield break;
     }
 
-    public void ResetSize()
+    public void ItemUsed()
     {
-        _rectTransform.sizeDelta = _originalSize;
+        if (_myItem == null || _inventoryController == null) return;
+
+        _inventoryController.ItemUsed(_myItem);
     }
 
-    private void OnDisable()
+    public void ToggleContextMenu(bool toggle)
     {
-        if (_originalSize != Vector2.zero)
-            ResetSize();
-    }
-
-    private void OnEnable()
-    {
-        if (_originalSize != Vector2.zero)
-            ResetSize();
+        _contextMenu.SetActive(toggle);
     }
 }
