@@ -744,6 +744,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonGame_Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5215232077846003201, guid: 719e6f341ddb28d40baa05af1a1de1dc,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215232077846003201, guid: 719e6f341ddb28d40baa05af1a1de1dc,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7426836820356024250, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
       propertyPath: _debugUI
@@ -802,6 +812,16 @@ PrefabInstance:
     - target: {fileID: 8487045366185733914, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654162424723080077, guid: 719e6f341ddb28d40baa05af1a1de1dc,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654162424723080077, guid: 719e6f341ddb28d40baa05af1a1de1dc,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

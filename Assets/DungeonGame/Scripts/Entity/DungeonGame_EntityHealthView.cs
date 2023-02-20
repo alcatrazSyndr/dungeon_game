@@ -9,6 +9,8 @@ public class DungeonGame_EntityHealthView : MonoBehaviour
     [SerializeField] private Slider _healthSlider;
     [SerializeField] private bool _localPlayerDebug = false;
     [SerializeField] private float _healthTweenTime = 0.1f;
+    [SerializeField] private bool _showDamageNumbers = false;
+    [SerializeField] private GameObject _damageNumberPrefab;
 
     private DungeonGame_EntityHealth _health = null;
 
@@ -47,6 +49,9 @@ public class DungeonGame_EntityHealthView : MonoBehaviour
         if (_health.Alive() && !_canvas.gameObject.activeSelf && !_localPlayerDebug)
             _canvas.gameObject.SetActive(true);
 
+        if (offset < 0f)
+            SpawnDamageNumber(offset);
+
         float targetFillAmount = _health.Health() / _health.MaxHealth();
         if (_canvas.gameObject.activeSelf)
         {
@@ -79,5 +84,15 @@ public class DungeonGame_EntityHealthView : MonoBehaviour
     private void Death()
     {
         _canvas.gameObject.SetActive(false);
+    }
+
+    private void SpawnDamageNumber(float damage)
+    {
+        if (_showDamageNumbers)
+        {
+            GameObject dmg = Instantiate(_damageNumberPrefab, _canvas);
+            DungeonGame_EntityDamageNumber dmgNumber = dmg.GetComponent<DungeonGame_EntityDamageNumber>();
+            dmgNumber.Initialize(damage);
+        }
     }
 }

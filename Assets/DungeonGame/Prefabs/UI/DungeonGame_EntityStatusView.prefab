@@ -722,6 +722,9 @@ MonoBehaviour:
   _healthSlider: {fileID: 7975003452943682876}
   _localPlayerDebug: 0
   _healthTweenTime: 0.1
+  _showDamageNumbers: 0
+  _damageNumberPrefab: {fileID: 3684154171305680862, guid: 3ae417d2af0cdf6419a74b4f82d191bf,
+    type: 3}
 --- !u!114 &8791493974550058000
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,3 +19,4 @@ MonoBehaviour:
   WeaponPrefab: {fileID: 8708457397236248323, guid: c68dd83af0bddeb4c904f4d670e98621,
     type: 3}
   AnimatorValue: 0.1
+  WeaponQuality: 0
