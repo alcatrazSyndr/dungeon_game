@@ -353,6 +353,8 @@ MonoBehaviour:
   _tweenTime: 0.1
   _rectTransform: {fileID: 4492709158165095417}
   _contextMenu: {fileID: 1904328782417164367}
+  _inventoryController: {fileID: 0}
+  _comparator: {fileID: 0}
 --- !u!1 &8430594979003404186
 GameObject:
   m_ObjectHideFlags: 0

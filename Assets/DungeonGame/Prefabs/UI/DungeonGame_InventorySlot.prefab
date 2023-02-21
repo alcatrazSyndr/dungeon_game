@@ -208,6 +208,8 @@ GameObject:
   - component: {fileID: 6728716911903426838}
   - component: {fileID: 7235579785456390066}
   - component: {fileID: 339916701396006285}
+  - component: {fileID: 8695890660573467714}
+  - component: {fileID: 6216850608699735541}
   m_Layer: 5
   m_Name: DungeonGame_InventorySlot
   m_TagString: Untagged
@@ -291,9 +293,44 @@ MonoBehaviour:
   _tweenTime: 0.1
   _rectTransform: {fileID: 4701518383265602462}
   _contextMenu: {fileID: 6671153112827255006}
-  OnItemUsed:
-    m_PersistentCalls:
-      m_Calls: []
+--- !u!223 &8695890660573467714
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882966813589059643}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
+--- !u!114 &6216850608699735541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882966813589059643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &6623901580388150561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -465,6 +502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Maskable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853928144907297268, guid: ee839d74fb59f334d9d59936a3d9b5dd,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9213560186613183453, guid: ee839d74fb59f334d9d59936a3d9b5dd,
         type: 3}

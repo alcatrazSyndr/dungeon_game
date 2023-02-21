@@ -13,6 +13,7 @@ public class DungeonGame_PlayerEquipment_EquipmentSlotView : MonoBehaviour, IPoi
     [SerializeField] private RectTransform _rectTransform;
     [SerializeField] private GameObject _contextMenu;
     [SerializeField] private DungeonGame_PlayerInventoryController _inventoryController;
+    [SerializeField] private DungeonGame_PlayerComparatorViewController _comparator;
 
     private Vector2 _originalSize = Vector2.zero;
     private Vector2 _bigSize = Vector2.zero;
@@ -60,6 +61,7 @@ public class DungeonGame_PlayerEquipment_EquipmentSlotView : MonoBehaviour, IPoi
     {
         if (_placeholderObject.activeSelf) return;
 
+        _comparator.OnEquippedItemHovered?.Invoke(_inventoryController.PlayerEquipment[_slotType]);
         StopAllCoroutines();
         StartCoroutine(SizeTweenCRT(true));
     }
@@ -68,6 +70,7 @@ public class DungeonGame_PlayerEquipment_EquipmentSlotView : MonoBehaviour, IPoi
     {
         if (_placeholderObject.activeSelf) return;
 
+        _comparator.OnItemUnhovered?.Invoke();
         StopAllCoroutines();
         StartCoroutine(SizeTweenCRT(false));
         ToggleContextMenu(false);
@@ -109,5 +112,6 @@ public class DungeonGame_PlayerEquipment_EquipmentSlotView : MonoBehaviour, IPoi
     {
         _inventoryController.EquipmentUnequiped(_slotType);
         ToggleContextMenu(false);
+        _comparator.OnItemUnhovered?.Invoke();
     }
 }

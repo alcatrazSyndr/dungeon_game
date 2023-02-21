@@ -14,9 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: weapon_greatsword_3
   Name: Greatsword 3
+  ItemDescription: Mystical weapon, glows bright even in the darkest cave.
   Icon: {fileID: 21300000, guid: d212b1fc8c9824e4f914560100198ca8, type: 3}
   ItemType: 2
+  EquipmentAttributeBonus:
+  - Attribute: 1
+    AttributeValue: 6
+  - Attribute: 2
+    AttributeValue: 2
   WeaponPrefab: {fileID: 8708457397236248323, guid: c68dd83af0bddeb4c904f4d670e98621,
     type: 3}
   AnimatorValue: 0.1
   WeaponQuality: 0
+  WeaponBaseDamage: 40

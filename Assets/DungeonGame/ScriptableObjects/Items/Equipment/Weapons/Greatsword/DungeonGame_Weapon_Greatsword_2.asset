@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: weapon_greatsword_2
   Name: Greatsword 2
+  ItemDescription: An advanced weapon used by soliders.
   Icon: {fileID: 21300000, guid: 5226c5b2188d96144a6de3b53b31f35e, type: 3}
   ItemType: 2
+  EquipmentAttributeBonus:
+  - Attribute: 1
+    AttributeValue: 2
   WeaponPrefab: {fileID: 7208676777313517852, guid: dd31516876a2a8b43961fdf98fb85cfd,
     type: 3}
   AnimatorValue: 0.1
   WeaponQuality: 0
+  WeaponBaseDamage: 20

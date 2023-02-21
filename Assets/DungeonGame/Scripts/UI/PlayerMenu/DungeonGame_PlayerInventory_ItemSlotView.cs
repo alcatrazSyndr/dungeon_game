@@ -14,11 +14,12 @@ public class DungeonGame_PlayerInventory_ItemSlotView : MonoBehaviour, IPointerE
     [SerializeField] private GameObject _contextMenu;
 
     private DungeonGame_PlayerInventoryController _inventoryController;
+    private DungeonGame_PlayerComparatorViewController _comparator;
     private DungeonGame_Item _myItem = null;
     private Vector2 _originalSize = Vector2.zero;
     private Vector2 _bigSize = Vector2.zero;
 
-    public void Initialize(DungeonGame_Item newItem, DungeonGame_PlayerInventoryController inventoryController)
+    public void Initialize(DungeonGame_Item newItem, DungeonGame_PlayerInventoryController inventoryController, DungeonGame_PlayerComparatorViewController comparator)
     {
         _originalSize = _rectTransform.sizeDelta;
         _bigSize = _originalSize * 1.3f;
@@ -28,6 +29,7 @@ public class DungeonGame_PlayerInventory_ItemSlotView : MonoBehaviour, IPointerE
 
         _myItem = newItem;
         _inventoryController = inventoryController;
+        _comparator = comparator;
     }
 
     private void OnDisable()
@@ -46,6 +48,7 @@ public class DungeonGame_PlayerInventory_ItemSlotView : MonoBehaviour, IPointerE
     {
         StopAllCoroutines();
         StartCoroutine(SizeTweenCRT(true));
+        _comparator.OnItemHovered?.Invoke(_myItem);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -53,6 +56,7 @@ public class DungeonGame_PlayerInventory_ItemSlotView : MonoBehaviour, IPointerE
         StopAllCoroutines();
         StartCoroutine(SizeTweenCRT(false));
         ToggleContextMenu(false);
+        _comparator.OnItemUnhovered?.Invoke();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -84,6 +88,7 @@ public class DungeonGame_PlayerInventory_ItemSlotView : MonoBehaviour, IPointerE
     {
         if (_myItem == null || _inventoryController == null) return;
 
+        _comparator.OnItemUnhovered?.Invoke();
         _inventoryController.ItemUsed(_myItem);
     }
 

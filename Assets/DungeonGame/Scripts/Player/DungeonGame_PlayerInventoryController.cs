@@ -55,7 +55,10 @@ public class DungeonGame_PlayerInventoryController : MonoBehaviour
         DungeonGame_Item cachedItem = _playerEquipment[equipmentUsed.ItemType];
         _playerInventory.Remove(equipmentUsed);
         if (cachedItem != null)
+        {
+            OnEquipmentUnequipped?.Invoke(cachedItem);
             _playerInventory.Add(cachedItem);
+        }
         _playerEquipment[equipmentUsed.ItemType] = equipmentUsed;
 
         OnEquipmentEquipped?.Invoke(equipmentUsed);

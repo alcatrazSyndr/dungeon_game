@@ -7,6 +7,7 @@ public class DungeonGame_ItemSO : ScriptableObject
 {
     public string ID;
     public string Name;
+    public string ItemDescription;
     public Sprite Icon;
     public DungeonGame_Item.ItemTypes ItemType;
 }

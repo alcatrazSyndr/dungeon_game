@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: weapon_greatsword_1
   Name: Greatsword 1
+  ItemDescription: Basic greatsword, forged out of iron.
   Icon: {fileID: 21300000, guid: 85fbed0e07237c24abe222070f34ad27, type: 3}
   ItemType: 2
+  EquipmentAttributeBonus: []
   WeaponPrefab: {fileID: 7075954793435264876, guid: f0edf6f75fe3f944ea77bfbd6ed51c82,
     type: 3}
   AnimatorValue: 0.1
   WeaponQuality: 0
+  WeaponBaseDamage: 10

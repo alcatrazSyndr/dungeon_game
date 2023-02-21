@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 507859260445180211}
   - component: {fileID: 385736410}
   - component: {fileID: 5418421303553640336}
+  - component: {fileID: 6225509795994754639}
   m_Layer: 6
   m_Name: DungeonGame_Player
   m_TagString: Player
@@ -483,7 +484,7 @@ MonoBehaviour:
     type: 3}
   _chestTransform: {fileID: 113632357}
   _attackRange: 1
-  _debugDamage: 20
+  _fistDamage: 5
 --- !u!114 &1120549371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +533,9 @@ MonoBehaviour:
   OnEquipmentEquipped:
     m_PersistentCalls:
       m_Calls: []
+  OnEquipmentUnequipped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5418421303553640336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,6 +550,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _primaryWeaponHolder: {fileID: 9084181435902386291}
   _secondaryWeaponHolder: {fileID: 9084181435373239268}
+--- !u!114 &6225509795994754639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276810962779242360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c3f695829c75f468d9d1931ac9f5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damagePerStrengthBonus: 1
 --- !u!1 &5425644854425840407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,6 +1459,11 @@ PrefabInstance:
       propertyPath: _inventoryController
       value: 
       objectReference: {fileID: 385736410}
+    - target: {fileID: 6789195836790235613, guid: d76d982023593e64ea364b98955b420a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7325516774811434713, guid: d76d982023593e64ea364b98955b420a,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1468,6 +1490,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8292266738301438714, guid: d76d982023593e64ea364b98955b420a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568940217379014019, guid: d76d982023593e64ea364b98955b420a,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
