@@ -2906,6 +2906,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonGame_EquipmentSlot_MainHand
       objectReference: {fileID: 0}
+    - target: {fileID: 8185152600926979753, guid: a4b131f8b7da07b40ba2daf3bef441c6,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b131f8b7da07b40ba2daf3bef441c6, type: 3}
 --- !u!224 &1267240385976607187 stripped
@@ -3330,6 +3335,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonGame_EquipmentSlot_Head
       objectReference: {fileID: 0}
+    - target: {fileID: 8185152600926979753, guid: a4b131f8b7da07b40ba2daf3bef441c6,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b131f8b7da07b40ba2daf3bef441c6, type: 3}
 --- !u!114 &2402110958964827839 stripped
@@ -3634,6 +3644,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonGame_EquipmentSlot_Legs
       objectReference: {fileID: 0}
+    - target: {fileID: 8185152600926979753, guid: a4b131f8b7da07b40ba2daf3bef441c6,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b131f8b7da07b40ba2daf3bef441c6, type: 3}
 --- !u!114 &4029447519180788380 stripped
@@ -3785,6 +3800,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DungeonGame_EquipmentSlot_Torso
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185152600926979753, guid: a4b131f8b7da07b40ba2daf3bef441c6,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b131f8b7da07b40ba2daf3bef441c6, type: 3}

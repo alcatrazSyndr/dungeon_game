@@ -267,6 +267,8 @@ GameObject:
   - component: {fileID: 2805182395271985057}
   - component: {fileID: 2225083274068688855}
   - component: {fileID: 5154402150368492574}
+  - component: {fileID: 8185152600926979753}
+  - component: {fileID: 5469246341646065481}
   m_Layer: 5
   m_Name: DungeonGame_EquipmentSlot
   m_TagString: Untagged
@@ -355,6 +357,44 @@ MonoBehaviour:
   _contextMenu: {fileID: 1904328782417164367}
   _inventoryController: {fileID: 0}
   _comparator: {fileID: 0}
+--- !u!223 &8185152600926979753
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6754615211858291082}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
+--- !u!114 &5469246341646065481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6754615211858291082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &8430594979003404186
 GameObject:
   m_ObjectHideFlags: 0
