@@ -527,10 +527,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8daa3c2a1cca94448a54d16d181ad3f4, type: 2}
   - {fileID: 11400000, guid: 5bbbd02cc465b304eb682748cf6096ca, type: 2}
   - {fileID: 11400000, guid: fb2152d9397a6d540aa52d01ff1ee419, type: 2}
-  - {fileID: 11400000, guid: 11c83503a9a227941ad9bb540b330060, type: 2}
-  - {fileID: 11400000, guid: 14134676562dfc94ea8f5bdbdaa3f6dc, type: 2}
-  - {fileID: 11400000, guid: ac8f7eb5995b87340bf5423b38293244, type: 2}
-  - {fileID: 11400000, guid: 334cf5ee1ae02704889c0f2a8bf6f415, type: 2}
+  - {fileID: 11400000, guid: d1e0e8600eeab744b86f8806ea129728, type: 2}
+  - {fileID: 11400000, guid: 3a80ae4efb529174d893a25e64db6f25, type: 2}
+  - {fileID: 11400000, guid: d778b0a82fc5a964fae23803c1e56ccf, type: 2}
+  - {fileID: 11400000, guid: 0fd2954727648ec46ad50118e94223eb, type: 2}
   OnInventoryChanged:
     m_PersistentCalls:
       m_Calls: []

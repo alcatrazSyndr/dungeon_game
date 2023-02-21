@@ -991,6 +991,8 @@ MonoBehaviour:
     type: 3}
   _itemDescriptionTextPrefab: {fileID: 5839352292702539131, guid: bdedd2f3e1e541d4a81574cac8c02452,
     type: 3}
+  _itemStatTextPrefab: {fileID: 6140010657258818741, guid: 79fbeb5f2273abb4ab38ccdc3c07c027,
+    type: 3}
 --- !u!1 &2066195716931004256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,6 +1091,8 @@ MonoBehaviour:
   _itemAttributeTextPrefab: {fileID: 6140010657258818741, guid: 15b8f2dfcee03dc458591a44b08c63bb,
     type: 3}
   _itemDescriptionTextPrefab: {fileID: 5839352292702539131, guid: bdedd2f3e1e541d4a81574cac8c02452,
+    type: 3}
+  _itemStatTextPrefab: {fileID: 6140010657258818741, guid: 79fbeb5f2273abb4ab38ccdc3c07c027,
     type: 3}
 --- !u!1 &2407820826057386754
 GameObject:

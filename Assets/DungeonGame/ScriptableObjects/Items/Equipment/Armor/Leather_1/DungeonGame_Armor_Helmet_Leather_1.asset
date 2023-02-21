@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c4e82c30cf969942a19a47a646d8cd7, type: 3}
-  m_Name: DungeonGame_Helmet_Leather_1
+  m_Script: {fileID: 11500000, guid: dbb8e828ca643764c9a48491bc2cdbe2, type: 3}
+  m_Name: DungeonGame_Armor_Helmet_Leather_1
   m_EditorClassIdentifier: 
   ID: armor_helmet_1
   Name: Leather Cowl
   ItemDescription: A simple cowl made from leather, offers very little protection.
   Icon: {fileID: 21300000, guid: 10f949db0da72ae488c897483dc2c7a7, type: 3}
   ItemType: 3
-  EquipmentAttributeBonus: []
+  EquipmentAttributeBonus:
+  - Attribute: 2
+    AttributeValue: 1
+  ArmorValue: 1
