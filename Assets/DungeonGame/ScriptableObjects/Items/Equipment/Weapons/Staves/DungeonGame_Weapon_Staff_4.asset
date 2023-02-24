@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b96ce060dd3f345a334112964baab7, type: 3}
+  m_Name: DungeonGame_Weapon_Staff_4
+  m_EditorClassIdentifier: 
+  ID: weapon_staff_4
+  Name: Runic Staff
+  ItemDescription: A powerful relic imbued with ancient magic.
+  Icon: {fileID: 21300000, guid: 75bdcfb796314ff4482d391014480113, type: 3}
+  ItemType: 2
+  EquipmentAttributeBonus: []
+  WeaponPrefab: {fileID: 7985973196113562037, guid: af879a9aa8ccc0a4096b94b8a9a8f1d2,
+    type: 3}
+  AnimatorValue: 0.2
+  WeaponQuality: 0
+  WeaponBaseDamage: 10

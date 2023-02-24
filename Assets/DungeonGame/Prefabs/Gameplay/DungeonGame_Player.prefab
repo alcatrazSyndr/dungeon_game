@@ -275,6 +275,37 @@ MonoBehaviour:
       y: 1
       z: 1
     m_MaintainOffset: 0
+--- !u!1 &463986530132054049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6081835348287930047}
+  m_Layer: 0
+  m_Name: FireballRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6081835348287930047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463986530132054049}
+  m_LocalRotation: {x: -0.13844742, y: 0.9899646, z: 0.02824487, w: -0.002193167}
+  m_LocalPosition: {x: -0.30744785, y: 0.66839534, z: 0.12546203}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9084181436259109117}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3276810962779242360
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,6 +328,7 @@ GameObject:
   - component: {fileID: 385736410}
   - component: {fileID: 5418421303553640336}
   - component: {fileID: 6225509795994754639}
+  - component: {fileID: 6411038535266330597}
   m_Layer: 6
   m_Name: DungeonGame_Player
   m_TagString: Player
@@ -483,6 +515,7 @@ MonoBehaviour:
   _damageSplashVFX: {fileID: 4491681608301920529, guid: 37ce903611e4d0843a3a248e9c94c219,
     type: 3}
   _chestTransform: {fileID: 113632357}
+  _fireballPoint: {fileID: 0}
   _attackRange: 1
   _fistDamage: 5
 --- !u!114 &1120549371
@@ -531,6 +564,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a80ae4efb529174d893a25e64db6f25, type: 2}
   - {fileID: 11400000, guid: d778b0a82fc5a964fae23803c1e56ccf, type: 2}
   - {fileID: 11400000, guid: 0fd2954727648ec46ad50118e94223eb, type: 2}
+  - {fileID: 11400000, guid: 8e2a598e7c469f34697b2d7249f6824e, type: 2}
+  - {fileID: 11400000, guid: 315130e0f9175ab44a91902d7b13a5b7, type: 2}
+  - {fileID: 11400000, guid: e48497def6398094ebb3f872096f0995, type: 2}
+  - {fileID: 11400000, guid: 67f88a915d84ff1458a21ff083d733d7, type: 2}
   OnInventoryChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -578,6 +615,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damagePerStrengthBonus: 1
+--- !u!114 &6411038535266330597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276810962779242360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d719400229e88f4b9e3faf6808ed1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 7490071064314342895, guid: 49f4eb7c8c96f2e40b86576da2cd6d0a,
+    type: 3}
 --- !u!1 &5425644854425840407
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +995,12 @@ GameObject:
 --- !u!1 &9084181436234107545 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7235548229815268152, guid: 639611dac34b2fe488491d3f9be8f6e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1907461519503194529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9084181436259109117 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7235548229857374556, guid: 639611dac34b2fe488491d3f9be8f6e9,
     type: 3}
   m_PrefabInstance: {fileID: 1907461519503194529}
   m_PrefabAsset: {fileID: 0}

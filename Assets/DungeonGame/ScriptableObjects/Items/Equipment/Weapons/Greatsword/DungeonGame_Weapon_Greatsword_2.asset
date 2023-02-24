@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DungeonGame_Weapon_Greatsword_2
   m_EditorClassIdentifier: 
   ID: weapon_greatsword_2
-  Name: Greatsword 2
+  Name: Militant Greatsword
   ItemDescription: An advanced weapon used by soliders.
   Icon: {fileID: 21300000, guid: 5226c5b2188d96144a6de3b53b31f35e, type: 3}
   ItemType: 2
