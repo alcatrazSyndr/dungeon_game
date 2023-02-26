@@ -13,6 +13,7 @@ public class DungeonGame_PlayerInventoryController : MonoBehaviour
     private Dictionary<DungeonGame_Item.ItemTypes, DungeonGame_Item> _playerEquipment = new Dictionary<DungeonGame_Item.ItemTypes, DungeonGame_Item>()
     {
         { DungeonGame_Item.ItemTypes.PrimaryWeapon, null },
+        { DungeonGame_Item.ItemTypes.SecondaryWeapon, null },
         { DungeonGame_Item.ItemTypes.Helmet, null },
         { DungeonGame_Item.ItemTypes.Chestpiece, null },
         { DungeonGame_Item.ItemTypes.Leggings, null },

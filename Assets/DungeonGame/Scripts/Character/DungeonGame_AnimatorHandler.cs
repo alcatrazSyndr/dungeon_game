@@ -10,6 +10,7 @@ public class DungeonGame_AnimatorHandler : MonoBehaviour
     private DungeonGame_NavMeshMovement _controller = null;
     private bool _isInitialized = false;
 
+    public UnityEvent<string> OnAttackBeginCharge = new UnityEvent<string>();
     public UnityEvent OnAttackEnd = new UnityEvent();
     public UnityEvent OnAttackPeak = new UnityEvent();
     public UnityEvent OnFootstep = new UnityEvent();
@@ -62,6 +63,11 @@ public class DungeonGame_AnimatorHandler : MonoBehaviour
     public void AttackPeak()
     {
         OnAttackPeak?.Invoke();
+    }
+
+    public void AttackBeginCharge(string charge)
+    {
+        OnAttackBeginCharge?.Invoke(charge);
     }
 
     public void AttackEnd()

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class DungeonGame_Item
 {
-    public enum ItemTypes { Null, Resource, PrimaryWeapon, Helmet, Chestpiece, Leggings, Boots }
+    public enum ItemTypes { Null, Resource, PrimaryWeapon, Helmet, Chestpiece, Leggings, Boots, SecondaryWeapon }
 
     public ItemTypes ItemType = ItemTypes.Null;
     public Sprite ItemIcon = null;

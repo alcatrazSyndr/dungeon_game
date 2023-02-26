@@ -103,7 +103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054798418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35, y: 0, z: 3.017}
+  m_LocalPosition: {x: -0.5, y: 0, z: 3.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -299,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463986530132054049}
   m_LocalRotation: {x: -0.13844742, y: 0.9899646, z: 0.02824487, w: -0.002193167}
-  m_LocalPosition: {x: -0.30744785, y: 0.66839534, z: 0.12546203}
+  m_LocalPosition: {x: -0.309, y: 0.675, z: 0.006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -515,7 +515,9 @@ MonoBehaviour:
   _damageSplashVFX: {fileID: 4491681608301920529, guid: 37ce903611e4d0843a3a248e9c94c219,
     type: 3}
   _chestTransform: {fileID: 113632357}
-  _fireballPoint: {fileID: 0}
+  _fireballPoint: {fileID: 6081835348287930047}
+  _fireballChargeVFX: {fileID: 2249810030764326779, guid: 500c45447dc34c74b87f3d1c0d6312da,
+    type: 3}
   _attackRange: 1
   _fistDamage: 5
 --- !u!114 &1120549371
@@ -559,7 +561,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aea09486a43d07241a99c1f60dcc26e1, type: 2}
   - {fileID: 11400000, guid: 8daa3c2a1cca94448a54d16d181ad3f4, type: 2}
   - {fileID: 11400000, guid: 5bbbd02cc465b304eb682748cf6096ca, type: 2}
-  - {fileID: 11400000, guid: fb2152d9397a6d540aa52d01ff1ee419, type: 2}
   - {fileID: 11400000, guid: d1e0e8600eeab744b86f8806ea129728, type: 2}
   - {fileID: 11400000, guid: 3a80ae4efb529174d893a25e64db6f25, type: 2}
   - {fileID: 11400000, guid: d778b0a82fc5a964fae23803c1e56ccf, type: 2}
@@ -567,7 +568,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e2a598e7c469f34697b2d7249f6824e, type: 2}
   - {fileID: 11400000, guid: 315130e0f9175ab44a91902d7b13a5b7, type: 2}
   - {fileID: 11400000, guid: e48497def6398094ebb3f872096f0995, type: 2}
-  - {fileID: 11400000, guid: 67f88a915d84ff1458a21ff083d733d7, type: 2}
+  - {fileID: 11400000, guid: 192077f9b4b8ba94db9e570a406b13c3, type: 2}
+  - {fileID: 11400000, guid: 77fd494501bc2454bbc2b01862ec4ea1, type: 2}
+  - {fileID: 11400000, guid: 1c5ab0f7ce0f0da44ad1012ace4852b8, type: 2}
+  - {fileID: 11400000, guid: 3127b02779e69ce4aa97a390fb669703, type: 2}
+  - {fileID: 11400000, guid: 01cec19e921b309468aadd25fa990e82, type: 2}
+  - {fileID: 11400000, guid: 3a7752239c1712848a684e39934a2884, type: 2}
+  - {fileID: 11400000, guid: 27ec424d328ea3d46b3cc2ad552cec81, type: 2}
+  - {fileID: 11400000, guid: 62ec8065a52be0349b177bd0c3b8372b, type: 2}
+  - {fileID: 11400000, guid: 4e02bf3f879eed8488d8874e140b1613, type: 2}
   OnInventoryChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -653,7 +662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5425644854425840407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -686,7 +695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8086056405754872508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.58, z: 0}
+  m_LocalPosition: {x: 0, y: 1.715, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -724,7 +733,7 @@ PrefabInstance:
     - target: {fileID: 3379970133996501350, guid: 80469d9b326ce96468aef45defcd3ffb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.883
+      value: -4.7
       objectReference: {fileID: 0}
     - target: {fileID: 3379970133996501350, guid: 80469d9b326ce96468aef45defcd3ffb,
         type: 3}
@@ -1050,6 +1059,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ffe0a2aae9b1b1499f2830bcb223f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnAttackBeginCharge:
+    m_PersistentCalls:
+      m_Calls: []
   OnAttackEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -1598,6 +1610,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7834460341619439245, guid: d76d982023593e64ea364b98955b420a,
+        type: 3}
+      propertyPath: _inventoryController
+      value: 
+      objectReference: {fileID: 385736410}
     - target: {fileID: 8292266738301438714, guid: d76d982023593e64ea364b98955b420a,
         type: 3}
       propertyPath: m_SizeDelta.x

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b96ce060dd3f345a334112964baab7, type: 3}
+  m_Name: DungeonGame_Weapon_Shield_3
+  m_EditorClassIdentifier: 
+  ID: weapon_shield_3
+  Name: Sentry Shield
+  ItemDescription: Strong shield made from black steel with gold inlays.
+  Icon: {fileID: 21300000, guid: 472c961b09696a742928df4a1527fb67, type: 3}
+  ItemType: 7
+  EquipmentAttributeBonus: []
+  WeaponPrefab: {fileID: 1661296138393598259, guid: 96b4c66fd0181d24389e609cf5103c65,
+    type: 3}
+  AnimatorValue: 0
+  WeaponQuality: 0
+  WeaponBaseDamage: 0
+  RightHanded: 0
+  TwoHanded: 0

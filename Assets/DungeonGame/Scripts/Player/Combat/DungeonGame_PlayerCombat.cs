@@ -7,6 +7,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject _damageSplashVFX;
     [SerializeField] private Transform _chestTransform;
     [SerializeField] private Transform _fireballPoint;
+    [SerializeField] private GameObject _fireballChargeVFX;
     [SerializeField] private float _attackRange = 1f;
     [SerializeField] private float _fistDamage = 5f;
 
@@ -15,6 +16,8 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     private DungeonGame_EntityCombat_RangedAttack_Basic _rangedBasicController = null;
     private DungeonGame_PlayerInventoryController _inventoryController = null;
     private DungeonGame_EntityAttribute _attributes = null;
+
+    private GameObject _chargeVFX = null;
 
     private void OnEnable()
     {
@@ -25,11 +28,13 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         _attributes = transform.GetComponent<DungeonGame_EntityAttribute>();
 
         _animatorHandler.OnAttackPeak.AddListener(Attack);
+        _animatorHandler.OnAttackBeginCharge.AddListener(AttackBeginCharge);
     }
 
     private void OnDisable()
     {
         _animatorHandler.OnAttackPeak.RemoveListener(Attack);
+        _animatorHandler.OnAttackBeginCharge.RemoveListener(AttackBeginCharge);
     }
 
     private void Attack()
@@ -56,6 +61,15 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         {
             _meleeBasicController.Attack(_attackRange, _attributes.ReturnTotalStrengthDamage(damage), _chestTransform, _damageSplashVFX);
         }
+
+        if (_chargeVFX != null)
+            Destroy(_chargeVFX);
+    }
+
+    private void AttackBeginCharge(string charge)
+    {
+        if (charge == "Fireball")
+            _chargeVFX = Instantiate(_fireballChargeVFX, _fireballPoint);
     }
 
     private void OnDrawGizmos()

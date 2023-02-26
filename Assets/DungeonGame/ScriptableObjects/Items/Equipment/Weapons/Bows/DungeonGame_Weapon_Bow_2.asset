@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b96ce060dd3f345a334112964baab7, type: 3}
+  m_Name: DungeonGame_Weapon_Bow_2
+  m_EditorClassIdentifier: 
+  ID: weapon_bow_2
+  Name: Hunting Bow
+  ItemDescription: Sturdy made bow, great for hunting purposes.
+  Icon: {fileID: 21300000, guid: 68b53d53a38ab9c42ad66d9b5ba6f4ed, type: 3}
+  ItemType: 2
+  EquipmentAttributeBonus: []
+  WeaponPrefab: {fileID: 3427510902651170651, guid: 3ba0afdd78649f0499b354e23cdacc11,
+    type: 3}
+  AnimatorValue: 0
+  WeaponQuality: 0
+  WeaponBaseDamage: 0
+  RightHanded: 0
+  TwoHanded: 1
