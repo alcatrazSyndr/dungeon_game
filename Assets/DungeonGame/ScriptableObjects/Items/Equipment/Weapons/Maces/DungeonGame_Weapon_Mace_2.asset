@@ -17,12 +17,14 @@ MonoBehaviour:
   ItemDescription: Strong and heavy hitting mace used by stone masons.
   Icon: {fileID: 21300000, guid: 7febd3737c054c648aaa66adc973c48c, type: 3}
   ItemType: 2
-  EquipmentAttributeBonus: []
+  EquipmentAttributeBonus:
+  - Attribute: 2
+    AttributeValue: 2
   WeaponPrefab: {fileID: 7501260151155443764, guid: 36f6e41630533a84694b7b0ee56be7e8,
     type: 3}
   AnimatorValue: 4
   WeaponQuality: 0
-  WeaponBaseDamage: 0
+  WeaponBaseDamage: 20
   RightHanded: 1
   TwoHanded: 0
   WeaponType: 4

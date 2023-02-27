@@ -328,7 +328,8 @@ GameObject:
   - component: {fileID: 385736410}
   - component: {fileID: 5418421303553640336}
   - component: {fileID: 6225509795994754639}
-  - component: {fileID: 6411038535266330597}
+  - component: {fileID: 3007355682350278808}
+  - component: {fileID: 5840440134348228200}
   m_Layer: 6
   m_Name: DungeonGame_Player
   m_TagString: Player
@@ -516,6 +517,7 @@ MonoBehaviour:
     type: 3}
   _chestTransform: {fileID: 113632357}
   _fireballPoint: {fileID: 6081835348287930047}
+  _arrowPoint: {fileID: 9084181435373239268}
   _fireballChargeVFX: {fileID: 2249810030764326779, guid: 500c45447dc34c74b87f3d1c0d6312da,
     type: 3}
   _attackRange: 1
@@ -563,6 +565,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 192077f9b4b8ba94db9e570a406b13c3, type: 2}
   - {fileID: 11400000, guid: 3127b02779e69ce4aa97a390fb669703, type: 2}
   - {fileID: 11400000, guid: 27ec424d328ea3d46b3cc2ad552cec81, type: 2}
+  - {fileID: 11400000, guid: d1e0e8600eeab744b86f8806ea129728, type: 2}
+  - {fileID: 11400000, guid: 3a80ae4efb529174d893a25e64db6f25, type: 2}
+  - {fileID: 11400000, guid: d778b0a82fc5a964fae23803c1e56ccf, type: 2}
+  - {fileID: 11400000, guid: 0fd2954727648ec46ad50118e94223eb, type: 2}
   OnInventoryChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -610,7 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damagePerStrengthBonus: 1
---- !u!114 &6411038535266330597
+--- !u!114 &3007355682350278808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -619,11 +625,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 3276810962779242360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d719400229e88f4b9e3faf6808ed1bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 05eab40edd17c014399f39c5ec3b40ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 7490071064314342895, guid: 49f4eb7c8c96f2e40b86576da2cd6d0a,
     type: 3}
+--- !u!114 &5840440134348228200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276810962779242360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6b00cb6ea2b7b4692949557aa65131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 7992863377756718650, guid: 1f1fc95307f78e140ba1acc7e8f56cf3,
+    type: 3}
+  _startVFX: {fileID: 3682251157193728142, guid: cfb63e213dc6a8242951a268406fa8e1,
+    type: 3}
+  _travelTime: 0.2
 --- !u!1 &5425644854425840407
 GameObject:
   m_ObjectHideFlags: 0

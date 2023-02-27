@@ -17,12 +17,14 @@ MonoBehaviour:
   ItemDescription: Basic bow, mostly used for training.
   Icon: {fileID: 21300000, guid: 203f2a10a1bf37143a8011c411bc0d3f, type: 3}
   ItemType: 2
-  EquipmentAttributeBonus: []
+  EquipmentAttributeBonus:
+  - Attribute: 3
+    AttributeValue: 1
   WeaponPrefab: {fileID: 441357163847238639, guid: a17901ab5ab665c45b6d7e0892e85274,
     type: 3}
   AnimatorValue: 3
   WeaponQuality: 0
-  WeaponBaseDamage: 0
+  WeaponBaseDamage: 10
   RightHanded: 0
   TwoHanded: 1
   WeaponType: 3

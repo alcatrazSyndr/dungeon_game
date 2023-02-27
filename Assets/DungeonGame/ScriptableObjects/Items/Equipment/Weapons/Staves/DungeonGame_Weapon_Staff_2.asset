@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   AnimatorValue: 2
   WeaponQuality: 0
-  WeaponBaseDamage: 10
+  WeaponBaseDamage: 40
   RightHanded: 1
   TwoHanded: 1
   WeaponType: 2

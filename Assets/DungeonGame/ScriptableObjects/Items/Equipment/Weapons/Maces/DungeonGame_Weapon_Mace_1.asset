@@ -17,12 +17,14 @@ MonoBehaviour:
   ItemDescription: Simple spiked club.
   Icon: {fileID: 21300000, guid: 6413d4a04a7d29440852d7f91b54609c, type: 3}
   ItemType: 2
-  EquipmentAttributeBonus: []
+  EquipmentAttributeBonus:
+  - Attribute: 1
+    AttributeValue: 1
   WeaponPrefab: {fileID: 2625415904504609758, guid: e2d8e0575dee2fa4993e000324100ea5,
     type: 3}
   AnimatorValue: 4
   WeaponQuality: 0
-  WeaponBaseDamage: 0
+  WeaponBaseDamage: 10
   RightHanded: 1
   TwoHanded: 0
   WeaponType: 4

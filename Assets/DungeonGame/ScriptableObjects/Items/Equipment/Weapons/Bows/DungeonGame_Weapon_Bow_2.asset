@@ -17,12 +17,14 @@ MonoBehaviour:
   ItemDescription: Sturdy made bow, great for hunting purposes.
   Icon: {fileID: 21300000, guid: 68b53d53a38ab9c42ad66d9b5ba6f4ed, type: 3}
   ItemType: 2
-  EquipmentAttributeBonus: []
+  EquipmentAttributeBonus:
+  - Attribute: 3
+    AttributeValue: 2
   WeaponPrefab: {fileID: 3427510902651170651, guid: 3ba0afdd78649f0499b354e23cdacc11,
     type: 3}
   AnimatorValue: 3
   WeaponQuality: 0
-  WeaponBaseDamage: 0
+  WeaponBaseDamage: 30
   RightHanded: 0
   TwoHanded: 1
   WeaponType: 3

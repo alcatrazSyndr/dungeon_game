@@ -7,13 +7,15 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject _damageSplashVFX;
     [SerializeField] private Transform _chestTransform;
     [SerializeField] private Transform _fireballPoint;
+    [SerializeField] private Transform _arrowPoint;
     [SerializeField] private GameObject _fireballChargeVFX;
     [SerializeField] private float _attackRange = 1f;
     [SerializeField] private float _fistDamage = 5f;
 
     private DungeonGame_AnimatorHandler _animatorHandler = null;
     private DungeonGame_EntityCombat_MeleeAttack_Basic _meleeBasicController = null;
-    private DungeonGame_EntityCombat_RangedAttack_Basic _rangedBasicController = null;
+    private DungeonGame_EntityCombat_RangedAttack_Fireball _fireballController = null;
+    private DungeonGame_EntityCombat_RangedAttack_Arrow _arrowController = null;
     private DungeonGame_PlayerInventoryController _inventoryController = null;
     private DungeonGame_EntityAttribute _attributes = null;
 
@@ -23,7 +25,8 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     {
         _animatorHandler = transform.GetComponentInChildren<DungeonGame_AnimatorHandler>();
         _meleeBasicController = transform.GetComponent<DungeonGame_EntityCombat_MeleeAttack_Basic>();
-        _rangedBasicController = transform.GetComponent<DungeonGame_EntityCombat_RangedAttack_Basic>();
+        _fireballController = transform.GetComponent<DungeonGame_EntityCombat_RangedAttack_Fireball>();
+        _arrowController = transform.GetComponent<DungeonGame_EntityCombat_RangedAttack_Arrow>();
         _inventoryController = transform.GetComponent<DungeonGame_PlayerInventoryController>();
         _attributes = transform.GetComponent<DungeonGame_EntityAttribute>();
 
@@ -40,25 +43,53 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     private void Attack()
     {
         float damage = _fistDamage;
+        DungeonGame_Item.WeaponTypes weaponType = DungeonGame_Item.WeaponTypes.Empty;
         if (_inventoryController.PlayerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon] != null)
         {
             DungeonGame_WeaponSO weaponData = _inventoryController.PlayerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon].ItemData as DungeonGame_WeaponSO;
+            weaponType = weaponData.WeaponType;
             damage = weaponData.WeaponBaseDamage;
         }
-        if (_meleeBasicController != null)
+        if (weaponType == DungeonGame_Item.WeaponTypes.Greatsword || weaponType == DungeonGame_Item.WeaponTypes.Mace || weaponType == DungeonGame_Item.WeaponTypes.Empty)
         {
-            _meleeBasicController.Attack(_attackRange, _attributes.ReturnTotalStrengthDamage(damage), _chestTransform, _damageSplashVFX);
-        }
-        else if (_rangedBasicController != null)
-        {
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward);
-            foreach (RaycastHit hit in hits)
+            if (_meleeBasicController != null)
             {
-                if (hit.transform.CompareTag("Player")) continue;
+                _meleeBasicController.Attack(_attackRange, _attributes.ReturnTotalStrengthDamage(damage), _chestTransform, _damageSplashVFX);
+            }
+        }
+        else if (weaponType == DungeonGame_Item.WeaponTypes.Staff)
+        {
+            if (_fireballController != null)
+            {
+                RaycastHit[] hits;
+                hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward);
+                foreach (RaycastHit hit in hits)
+                {
+                    if (hit.transform.CompareTag("Player")) continue;
 
-                _rangedBasicController.Attack(damage, _fireballPoint, hit.point, _damageSplashVFX);
-                break;
+                    _fireballController.Attack(damage, _fireballPoint, hit.point, _damageSplashVFX);
+                    break;
+                }
+            }
+        }
+        else if (weaponType == DungeonGame_Item.WeaponTypes.Bow)
+        {
+            if (_arrowController != null)
+            {
+                RaycastHit[] hits;
+                hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward);
+                foreach (RaycastHit hit in hits)
+                {
+                    if (hit.transform.CompareTag("Player")) continue;
+
+                    DungeonGame_EntityHealth health = null;
+                    if (hit.transform.GetComponent<DungeonGame_EntityHealth>())
+                    {
+                        health = hit.transform.GetComponent<DungeonGame_EntityHealth>();
+                    }
+                    _arrowController.Attack(damage, hit.point, health, _damageSplashVFX, _arrowPoint);
+                    break;
+                }
             }
         }
 

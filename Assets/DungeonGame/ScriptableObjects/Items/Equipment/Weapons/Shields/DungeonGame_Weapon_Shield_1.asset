@@ -17,7 +17,11 @@ MonoBehaviour:
   ItemDescription: Simple wooden tower shield.
   Icon: {fileID: 21300000, guid: 87ea038f3c9b4be4080a40634dfc9729, type: 3}
   ItemType: 7
-  EquipmentAttributeBonus: []
+  EquipmentAttributeBonus:
+  - Attribute: 1
+    AttributeValue: 1
+  - Attribute: 2
+    AttributeValue: 1
   WeaponPrefab: {fileID: 4079879738586167959, guid: f4367aa08b1c5d04a8c99da7447243be,
     type: 3}
   AnimatorValue: 0.5

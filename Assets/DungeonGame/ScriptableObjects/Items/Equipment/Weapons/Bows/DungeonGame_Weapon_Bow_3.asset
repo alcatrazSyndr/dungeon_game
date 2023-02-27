@@ -17,12 +17,16 @@ MonoBehaviour:
   ItemDescription: Flexible and sturdy bow, used by Rangers in combat situations.
   Icon: {fileID: 21300000, guid: 230ad4bf9d8fee6438b03120c96ce4c4, type: 3}
   ItemType: 2
-  EquipmentAttributeBonus: []
+  EquipmentAttributeBonus:
+  - Attribute: 2
+    AttributeValue: 1
+  - Attribute: 3
+    AttributeValue: 3
   WeaponPrefab: {fileID: 3680351023066114511, guid: f244432fa60ecc84d88f09a472ffe9af,
     type: 3}
   AnimatorValue: 3
   WeaponQuality: 0
-  WeaponBaseDamage: 0
+  WeaponBaseDamage: 60
   RightHanded: 0
   TwoHanded: 1
   WeaponType: 3

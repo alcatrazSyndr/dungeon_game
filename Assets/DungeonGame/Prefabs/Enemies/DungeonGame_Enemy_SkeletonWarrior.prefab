@@ -96,7 +96,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.33
+  m_Radius: 0.45
   m_Height: 1.84
   m_Direction: 1
   m_Center: {x: 0, y: 0.81, z: 0}
@@ -474,6 +474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ffe0a2aae9b1b1499f2830bcb223f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnAttackBeginCharge:
+    m_PersistentCalls:
+      m_Calls: []
   OnAttackEnd:
     m_PersistentCalls:
       m_Calls: []

@@ -17,7 +17,11 @@ MonoBehaviour:
   ItemDescription: An advanced shield used by soldiers.
   Icon: {fileID: 21300000, guid: e425f4361eb792646a829d04da9cc477, type: 3}
   ItemType: 7
-  EquipmentAttributeBonus: []
+  EquipmentAttributeBonus:
+  - Attribute: 1
+    AttributeValue: 1
+  - Attribute: 2
+    AttributeValue: 2
   WeaponPrefab: {fileID: 9220238377832218460, guid: 716558472e483474ba24820ca10fcb31,
     type: 3}
   AnimatorValue: 0.5
