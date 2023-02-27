@@ -25,6 +25,17 @@ public class DungeonGame_PlayerEquipmentController : MonoBehaviour
         { DungeonGame_Item.ItemTypes.Boots, null }
     };
 
+    private Dictionary<string, float> _weaponCombinations = new Dictionary<string, float>()
+    {
+        { "Empty_Empty", 0f },
+        { "Greatsword_Empty", 1f },
+        { "Staff_Empty", 2f },
+        { "Bow_Empty", 3f },
+        { "Mace_Empty", 4f },
+        { "Mace_Shield", 5f },
+        { "Empty_Shield", 6f }
+    };
+
     private void OnEnable()
     {
         _inventory = transform.GetComponent<DungeonGame_PlayerInventoryController>();
@@ -48,9 +59,9 @@ public class DungeonGame_PlayerEquipmentController : MonoBehaviour
 
     private void EquipmentEquipped(DungeonGame_Item newEquipment)
     {
-        if (newEquipment.ItemType == DungeonGame_Item.ItemTypes.PrimaryWeapon)
+        if (newEquipment.ItemType == DungeonGame_Item.ItemTypes.PrimaryWeapon || newEquipment.ItemType == DungeonGame_Item.ItemTypes.SecondaryWeapon)
         {
-            WeaponChanged(newEquipment);
+            WeaponChanged();
         }
         else if (ItemIsVisualArmor(newEquipment))
         {
@@ -60,9 +71,9 @@ public class DungeonGame_PlayerEquipmentController : MonoBehaviour
 
     private void EquipmentUnequipped(DungeonGame_Item equipmentToUnequip)
     {
-        if (equipmentToUnequip.ItemType == DungeonGame_Item.ItemTypes.PrimaryWeapon)
+        if (equipmentToUnequip.ItemType == DungeonGame_Item.ItemTypes.PrimaryWeapon || equipmentToUnequip.ItemType == DungeonGame_Item.ItemTypes.SecondaryWeapon)
         {
-            ClearHands();
+            WeaponChanged();
         }
         else if (ItemIsVisualArmor(equipmentToUnequip))
         {
@@ -172,14 +183,42 @@ public class DungeonGame_PlayerEquipmentController : MonoBehaviour
     #endregion
 
     #region Weapon
-    private void WeaponChanged(DungeonGame_Item newWeapon)
+    private void WeaponChanged()
     {
         ClearHands();
+        string weaponCombination = string.Empty;
+        if (_inventory.PlayerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon] != null)
+        {
+            DungeonGame_WeaponSO weaponData = _inventory.PlayerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon].ItemData as DungeonGame_WeaponSO;
+            GameObject weapon = Instantiate(weaponData.WeaponPrefab, weaponData.RightHanded ? _primaryWeaponHolder : _secondaryWeaponHolder);
+            weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.localRotation = Quaternion.identity;
+            weaponCombination += weaponData.WeaponType.ToString() + "_";
+        }
+        else
+        {
+            weaponCombination += "Empty_";
+        }
+        if (_inventory.PlayerEquipment[DungeonGame_Item.ItemTypes.SecondaryWeapon] != null)
+        {
+            DungeonGame_WeaponSO weaponData = _inventory.PlayerEquipment[DungeonGame_Item.ItemTypes.SecondaryWeapon].ItemData as DungeonGame_WeaponSO;
+            GameObject weapon = Instantiate(weaponData.WeaponPrefab, _secondaryWeaponHolder);
+            weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.localRotation = Quaternion.identity;
+            weaponCombination += weaponData.WeaponType.ToString();
+        }
+        else
+        {
+            weaponCombination += "Empty";
+        }
+        _animation.SetWeaponAnimationValue(_weaponCombinations[weaponCombination]);
+        /*
         DungeonGame_WeaponSO weaponData = newWeapon.ItemData as DungeonGame_WeaponSO;
         GameObject weapon = Instantiate(weaponData.WeaponPrefab, _primaryWeaponHolder);
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.identity;
         _animation.SetWeaponAnimationValue(weaponData.AnimatorValue);
+        */
     }
 
     private void ClearHands()

@@ -45,7 +45,11 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
             DungeonGame_WeaponSO weaponData = _inventoryController.PlayerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon].ItemData as DungeonGame_WeaponSO;
             damage = weaponData.WeaponBaseDamage;
         }
-        if (_rangedBasicController != null)
+        if (_meleeBasicController != null)
+        {
+            _meleeBasicController.Attack(_attackRange, _attributes.ReturnTotalStrengthDamage(damage), _chestTransform, _damageSplashVFX);
+        }
+        else if (_rangedBasicController != null)
         {
             RaycastHit[] hits;
             hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward);
@@ -56,10 +60,6 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
                 _rangedBasicController.Attack(damage, _fireballPoint, hit.point, _damageSplashVFX);
                 break;
             }
-        }
-        else if (_meleeBasicController != null)
-        {
-            _meleeBasicController.Attack(_attackRange, _attributes.ReturnTotalStrengthDamage(damage), _chestTransform, _damageSplashVFX);
         }
 
         if (_chargeVFX != null)

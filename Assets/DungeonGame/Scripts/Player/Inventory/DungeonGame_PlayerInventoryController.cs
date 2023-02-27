@@ -62,6 +62,29 @@ public class DungeonGame_PlayerInventoryController : MonoBehaviour
         }
         _playerEquipment[equipmentUsed.ItemType] = equipmentUsed;
 
+        if (equipmentUsed.ItemType == DungeonGame_Item.ItemTypes.PrimaryWeapon)
+        {
+            if (_playerEquipment[DungeonGame_Item.ItemTypes.SecondaryWeapon] != null)
+            {
+                DungeonGame_WeaponSO newPrimary = equipmentUsed.ItemData as DungeonGame_WeaponSO;
+                if (newPrimary.TwoHanded)
+                {
+                    EquipmentUnequiped(DungeonGame_Item.ItemTypes.SecondaryWeapon);
+                }
+            }
+        }
+        else if (equipmentUsed.ItemType == DungeonGame_Item.ItemTypes.SecondaryWeapon)
+        {
+            if (_playerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon] != null)
+            {
+                DungeonGame_WeaponSO currentPrimary = _playerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon].ItemData as DungeonGame_WeaponSO;
+                if (currentPrimary.TwoHanded)
+                {
+                    EquipmentUnequiped(DungeonGame_Item.ItemTypes.PrimaryWeapon);
+                }
+            }
+        }
+
         OnEquipmentEquipped?.Invoke(equipmentUsed);
     }
 
@@ -70,8 +93,9 @@ public class DungeonGame_PlayerInventoryController : MonoBehaviour
         if (_playerEquipment[slot] == null) return;
 
         _playerInventory.Add(_playerEquipment[slot]);
-        OnEquipmentUnequipped?.Invoke(_playerEquipment[slot]);
+        DungeonGame_Item cached = _playerEquipment[slot];
         _playerEquipment[slot] = null;
+        OnEquipmentUnequipped?.Invoke(cached);
 
         OnInventoryChanged?.Invoke();
     }

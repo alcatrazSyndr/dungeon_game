@@ -20,6 +20,9 @@ MonoBehaviour:
   EquipmentAttributeBonus: []
   WeaponPrefab: {fileID: 7075954793435264876, guid: f0edf6f75fe3f944ea77bfbd6ed51c82,
     type: 3}
-  AnimatorValue: 0.1
+  AnimatorValue: 1
   WeaponQuality: 0
   WeaponBaseDamage: 10
+  RightHanded: 1
+  TwoHanded: 1
+  WeaponType: 1

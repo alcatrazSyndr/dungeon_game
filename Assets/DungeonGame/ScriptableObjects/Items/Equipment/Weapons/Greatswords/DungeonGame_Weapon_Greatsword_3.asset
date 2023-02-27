@@ -24,6 +24,9 @@ MonoBehaviour:
     AttributeValue: 2
   WeaponPrefab: {fileID: 8708457397236248323, guid: c68dd83af0bddeb4c904f4d670e98621,
     type: 3}
-  AnimatorValue: 0.1
+  AnimatorValue: 1
   WeaponQuality: 0
   WeaponBaseDamage: 40
+  RightHanded: 1
+  TwoHanded: 1
+  WeaponType: 1

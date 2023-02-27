@@ -11,4 +11,5 @@ public class DungeonGame_WeaponSO : DungeonGame_EquipmentSO
     public float WeaponBaseDamage = 0f;
     public bool RightHanded = true;
     public bool TwoHanded = true;
+    public DungeonGame_Item.WeaponTypes WeaponType = DungeonGame_Item.WeaponTypes.Empty;
 }
