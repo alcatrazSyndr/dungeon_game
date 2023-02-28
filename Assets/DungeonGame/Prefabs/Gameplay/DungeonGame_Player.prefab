@@ -517,11 +517,14 @@ MonoBehaviour:
     type: 3}
   _chestTransform: {fileID: 113632357}
   _fireballPoint: {fileID: 6081835348287930047}
-  _arrowPoint: {fileID: 9084181435373239268}
+  _arrowPoint: {fileID: 1548188819983813509}
   _fireballChargeVFX: {fileID: 2249810030764326779, guid: 500c45447dc34c74b87f3d1c0d6312da,
     type: 3}
   _attackRange: 1
   _fistDamage: 5
+  _collisionLayer:
+    serializedVersion: 2
+    m_Bits: 2147483647
 --- !u!114 &1120549371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,7 +916,7 @@ PrefabInstance:
     - target: {fileID: 7235548230501617885, guid: 639611dac34b2fe488491d3f9be8f6e9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.086
+      value: -0.018
       objectReference: {fileID: 0}
     - target: {fileID: 7235548230501617885, guid: 639611dac34b2fe488491d3f9be8f6e9,
         type: 3}
@@ -962,6 +965,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 639611dac34b2fe488491d3f9be8f6e9, type: 3}
+--- !u!4 &1548188819983813509 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1082253290091786788, guid: 639611dac34b2fe488491d3f9be8f6e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1907461519503194529}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9084181434701463039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7235548231103595614, guid: 639611dac34b2fe488491d3f9be8f6e9,

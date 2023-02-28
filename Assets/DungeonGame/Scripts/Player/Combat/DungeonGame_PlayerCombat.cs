@@ -11,6 +11,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject _fireballChargeVFX;
     [SerializeField] private float _attackRange = 1f;
     [SerializeField] private float _fistDamage = 5f;
+    [SerializeField] private LayerMask _collisionLayer;
 
     private DungeonGame_AnimatorHandler _animatorHandler = null;
     private DungeonGame_EntityCombat_MeleeAttack_Basic _meleeBasicController = null;
@@ -61,8 +62,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         {
             if (_fireballController != null)
             {
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward);
+                List<RaycastHit> hits = ReturnSortedRaycastHits(_fireballPoint);
                 foreach (RaycastHit hit in hits)
                 {
                     if (hit.transform.CompareTag("Player")) continue;
@@ -76,8 +76,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         {
             if (_arrowController != null)
             {
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward);
+                List<RaycastHit> hits = ReturnSortedRaycastHits(_arrowPoint);
                 foreach (RaycastHit hit in hits)
                 {
                     if (hit.transform.CompareTag("Player")) continue;
@@ -95,6 +94,17 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
 
         if (_chargeVFX != null)
             Destroy(_chargeVFX);
+    }
+
+    private List<RaycastHit> ReturnSortedRaycastHits(Transform fromPoint)
+    {
+        Vector3 startPos = fromPoint.position;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(ray, Mathf.Infinity, _collisionLayer.value, QueryTriggerInteraction.Collide);
+        List<RaycastHit> hitList = new List<RaycastHit>(hits);
+        hitList.Sort((hit1, hit2) => Vector3.Distance(startPos, hit1.point).CompareTo(Vector3.Distance(startPos, hit2.point)));
+        return hitList;
     }
 
     private void AttackBeginCharge(string charge)

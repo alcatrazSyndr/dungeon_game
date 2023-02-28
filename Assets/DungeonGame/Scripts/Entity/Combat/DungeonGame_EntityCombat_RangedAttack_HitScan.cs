@@ -22,7 +22,8 @@ public class DungeonGame_EntityCombat_RangedAttack_HitScan : MonoBehaviour
         projectile.transform.rotation = Quaternion.LookRotation(targetPosition - projectile.transform.position, Vector3.up);
         if (_startVFX != null)
         {
-            Instantiate(_startVFX, projectile.transform.position, projectile.transform.rotation);
+            GameObject startVFX = Instantiate(_startVFX, rootPosition);
+            startVFX.transform.rotation = Quaternion.LookRotation(projectile.transform.position - targetPosition, Vector3.up);
         }
         while (timer < _travelTime)
         {
