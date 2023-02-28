@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 6225509795994754639}
   - component: {fileID: 3007355682350278808}
   - component: {fileID: 5840440134348228200}
+  - component: {fileID: 6329117496154149487}
   m_Layer: 6
   m_Name: DungeonGame_Player
   m_TagString: Player
@@ -650,6 +651,28 @@ MonoBehaviour:
   _startVFX: {fileID: 3682251157193728142, guid: cfb63e213dc6a8242951a268406fa8e1,
     type: 3}
   _travelTime: 0.2
+--- !u!114 &6329117496154149487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276810962779242360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b15f710c71dba4897e7a1004bee8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialAP: 100
+  _burnOutUntilAP: 15
+  _apRegainRate: 0.25
+  _regainCooldown: 1
+  OnActionPointsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBurnOut:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5425644854425840407
 GameObject:
   m_ObjectHideFlags: 0

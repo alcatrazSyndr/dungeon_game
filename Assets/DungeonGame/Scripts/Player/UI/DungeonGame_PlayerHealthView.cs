@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DungeonGame_PlayerHealthView : MonoBehaviour
 {
     [SerializeField] private Transform _canvas;
     [SerializeField] private Image _healthCircle;
+    [SerializeField] private TextMeshProUGUI _healthText;
     [SerializeField] private bool _localPlayerDebug = false;
     [SerializeField] private float _healthTweenTime = 0f;
 
@@ -57,6 +59,7 @@ public class DungeonGame_PlayerHealthView : MonoBehaviour
         else
         {
             _healthCircle.fillAmount = targetFillAmount;
+            _healthText.text = ReturnPercentage(_healthCircle.fillAmount).ToString() + "%";
         }
     }
 
@@ -70,11 +73,20 @@ public class DungeonGame_PlayerHealthView : MonoBehaviour
         {
             interpolation = timer / _healthTweenTime;
             _healthCircle.fillAmount = target + (fillDifference * interpolation);
+            _healthText.text = ReturnPercentage(_healthCircle.fillAmount).ToString() + "%";
             timer -= Time.deltaTime;
             yield return null;
         }
         _healthCircle.fillAmount = target;
+        _healthText.text = ReturnPercentage(_healthCircle.fillAmount).ToString() + "%";
         yield break;
+    }
+
+    private int ReturnPercentage(float interpolation)
+    {
+        float percentage = interpolation * 100f;
+        percentage = Mathf.Clamp(percentage, 0f, 100f);
+        return Mathf.RoundToInt(percentage);
     }
 
     private void Death()
