@@ -30,8 +30,10 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
         _input.OnMovementInputEnded.AddListener(MovementInputEnded);
         // Combat Listeners
         _input.OnAttackInput.AddListener(AttackInput);
+        _input.OnSecondaryAttackInputChanged.AddListener(SecondaryAttackInput);
         // Animator Listeners
         _animatorHandler.OnAttackEnd.AddListener(AttackEnd);
+        _animatorHandler.OnSecondaryAttackEnd.AddListener(AttackEnd);
         // Menu Listeners
         _menuView.OnMenuToggled.AddListener(ToggleActionInput);
 
@@ -45,8 +47,10 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
         _input.OnMovementInputEnded.RemoveListener(MovementInputEnded);
         // Combat Listeners
         _input.OnAttackInput.RemoveListener(AttackInput);
+        _input.OnSecondaryAttackInputChanged.RemoveListener(SecondaryAttackInput);
         // Animator Listeners
         _animatorHandler.OnAttackEnd.RemoveListener(AttackEnd);
+        _animatorHandler.OnSecondaryAttackEnd.RemoveListener(AttackEnd);
         // Menu Listeners
         _menuView.OnMenuToggled.RemoveListener(ToggleActionInput);
     }
@@ -87,6 +91,24 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
         _attack++;
         if (_attack > _maxAttackCombo)
             _attack = 1;
+    }
+
+    private void SecondaryAttackInput(bool toggle)
+    {
+        if (_animator.GetFloat("WeaponType") == 0f) return;
+
+        if (toggle)
+        {
+            if (_inAttack || _actionBlock) return;
+
+            _inAttack = true;
+            _animator.Play("Secondary_Loop_1");
+            _animator.SetBool("LoopAttack", true);
+        }
+        else
+        {
+            _animator.SetBool("LoopAttack", false);
+        }
     }
 
     private void AttackEnd()

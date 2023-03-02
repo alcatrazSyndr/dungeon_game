@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054798419}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DungeonGame_CameraTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,7 +304,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9084181436259109117}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3276810962779242360
 GameObject:
@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 3007355682350278808}
   - component: {fileID: 5840440134348228200}
   - component: {fileID: 6329117496154149487}
+  - component: {fileID: 295707469}
   m_Layer: 6
   m_Name: DungeonGame_Player
   m_TagString: Player
@@ -420,6 +421,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnAttackInput:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSecondaryAttackInputChanged:
     m_PersistentCalls:
       m_Calls: []
   OnMenuInput:
@@ -521,6 +525,7 @@ MonoBehaviour:
   _arrowPoint: {fileID: 1548188819983813509}
   _fireballChargeVFX: {fileID: 2249810030764326779, guid: 500c45447dc34c74b87f3d1c0d6312da,
     type: 3}
+  _fireBreathVFX: {fileID: 2030026903684810829}
   _attackRange: 1
   _fistDamage: 5
   _collisionLayer:
@@ -673,6 +678,25 @@ MonoBehaviour:
   OnBurnOut:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &295707469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276810962779242360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f941171c6f698eb4db60e069f4f83a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionLayer:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  _coneAngle: 15
+  _attackRange: 5
+  _coneSampleRate: 6
+  _attackTick: 0.35
 --- !u!1 &5425644854425840407
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +923,141 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1840680467}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &832451371695586046
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9084181436259109117}
+    m_Modifications:
+    - target: {fileID: 1541766000267969827, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_Name
+      value: DungeonGame_VFX_FireBreath
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541766000267969827, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.2809447
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.68207175
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.05603689
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.67283595
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -162.071
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -266.187
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544305617961763153, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 331.465
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702409755536562373, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702409755536562373, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702409755536562373, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.a
+      value: 0.15686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702761612331266739, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702761612331266739, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702761612331266739, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702761612331266739, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703297889397337873, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703297889397337873, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372740895909470443, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: clearBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8425930943113534972, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8, type: 3}
+--- !u!198 &2030026903684810829 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1702761612331266739, guid: 9a40dafb5a72fdf4b8e183a77f4d72a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 832451371695586046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1907461519503194529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1110,6 +1269,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnFootstep:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSecondaryAttackStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSecondaryAttackEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5402144440542920994

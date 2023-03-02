@@ -9,6 +9,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     [SerializeField] private Transform _fireballPoint;
     [SerializeField] private Transform _arrowPoint;
     [SerializeField] private GameObject _fireballChargeVFX;
+    [SerializeField] private ParticleSystem _fireBreathVFX;
     [SerializeField] private float _attackRange = 1f;
     [SerializeField] private float _fistDamage = 5f;
     [SerializeField] private LayerMask _collisionLayer;
@@ -16,29 +17,38 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     private DungeonGame_AnimatorHandler _animatorHandler = null;
     private DungeonGame_EntityCombat_MeleeAttack_Basic _meleeBasicController = null;
     private DungeonGame_EntityCombat_RangedAttack_Fireball _fireballController = null;
+    private DungeonGame_EntityCombat_ConeAttack_FireBreath _fireBreathController = null;
     private DungeonGame_EntityCombat_RangedAttack_Arrow _arrowController = null;
     private DungeonGame_PlayerInventoryController _inventoryController = null;
     private DungeonGame_EntityAttribute _attributes = null;
-
+    private DungeonGame_EntityActionPoints _actionPoints = null;
     private GameObject _chargeVFX = null;
+
+    private IEnumerator _secondaryAttackCRT = null;
 
     private void OnEnable()
     {
         _animatorHandler = transform.GetComponentInChildren<DungeonGame_AnimatorHandler>();
         _meleeBasicController = transform.GetComponent<DungeonGame_EntityCombat_MeleeAttack_Basic>();
         _fireballController = transform.GetComponent<DungeonGame_EntityCombat_RangedAttack_Fireball>();
+        _fireBreathController = transform.GetComponent<DungeonGame_EntityCombat_ConeAttack_FireBreath>();
         _arrowController = transform.GetComponent<DungeonGame_EntityCombat_RangedAttack_Arrow>();
         _inventoryController = transform.GetComponent<DungeonGame_PlayerInventoryController>();
         _attributes = transform.GetComponent<DungeonGame_EntityAttribute>();
+        _actionPoints = transform.GetComponent<DungeonGame_EntityActionPoints>();
 
         _animatorHandler.OnAttackPeak.AddListener(Attack);
         _animatorHandler.OnAttackBeginCharge.AddListener(AttackBeginCharge);
+        _animatorHandler.OnSecondaryAttackStart.AddListener(SecondaryAttackStart);
+        _animatorHandler.OnSecondaryAttackEnd.AddListener(SecondaryAttackEnd);
     }
 
     private void OnDisable()
     {
         _animatorHandler.OnAttackPeak.RemoveListener(Attack);
         _animatorHandler.OnAttackBeginCharge.RemoveListener(AttackBeginCharge);
+        _animatorHandler.OnSecondaryAttackStart.RemoveListener(SecondaryAttackStart);
+        _animatorHandler.OnSecondaryAttackEnd.RemoveListener(SecondaryAttackEnd);
     }
 
     private void Attack()
@@ -96,6 +106,86 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
             Destroy(_chargeVFX);
     }
 
+    private void SecondaryAttackStart()
+    {
+        SecondaryAttack(true);
+    }
+
+    private void SecondaryAttackEnd()
+    {
+        SecondaryAttack(false);
+    }
+
+    private void SecondaryAttack(bool toggle)
+    {
+        float damage = _fistDamage;
+        DungeonGame_Item.WeaponTypes weaponType = DungeonGame_Item.WeaponTypes.Empty;
+        if (_inventoryController.PlayerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon] != null)
+        {
+            DungeonGame_WeaponSO weaponData = _inventoryController.PlayerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon].ItemData as DungeonGame_WeaponSO;
+            weaponType = weaponData.WeaponType;
+            damage = weaponData.WeaponBaseDamage;
+        }
+        if (weaponType == DungeonGame_Item.WeaponTypes.Greatsword)
+        {
+            // TODO
+        }
+        else if (weaponType == DungeonGame_Item.WeaponTypes.Mace)
+        {
+            // TODO
+        }
+        else if (weaponType == DungeonGame_Item.WeaponTypes.Staff)
+        {
+            if (toggle && !_actionPoints.BurntOut)
+            {
+                if (_secondaryAttackCRT != null)
+                {
+                    StopCoroutine(_secondaryAttackCRT);
+                    _secondaryAttackCRT = null;
+                }
+                _secondaryAttackCRT = SecondaryAttackCRT_FireBreath(damage);
+                StartCoroutine(_secondaryAttackCRT);
+                if (!_fireBreathVFX.gameObject.activeSelf)
+                    _fireBreathVFX.gameObject.SetActive(true);
+                _fireBreathVFX.Play();
+            }
+            else
+            {
+                if (_secondaryAttackCRT != null)
+                {
+                    StopCoroutine(_secondaryAttackCRT);
+                    _fireBreathVFX.Stop();
+                }
+            }
+        }
+        else if (weaponType == DungeonGame_Item.WeaponTypes.Bow)
+        {
+            // TODO
+        }
+    }
+
+    private IEnumerator SecondaryAttackCRT_FireBreath(float damage)
+    {
+        float tick = _fireBreathController.AttackTick;
+        while (true)
+        {
+            if (_fireBreathController != null)
+            {
+                List<RaycastHit> hits = ReturnSortedRaycastHits(_fireballPoint);
+                foreach (RaycastHit hit in hits)
+                {
+                    if (hit.transform.CompareTag("Player")) continue;
+
+                    _fireBreathController.Attack(_fireballPoint, Camera.main.transform.forward, hit, damage / 4f);
+                    break;
+                }
+            }
+            _actionPoints.ChangeActionPoints(-10f);
+            yield return new WaitForSecondsRealtime(tick);
+            yield return null;
+        }
+    }
+
     private void AttackBeginCharge(string charge)
     {
         if (charge == "Fireball")
@@ -115,46 +205,9 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         return hitList;
     }
 
-    public List<Ray> ReturnRaysInCone(float angle, int sampleRate, Transform root, Vector3 heading)
-    {
-        List<Ray> rays = new List<Ray>();
-
-        RaycastHit firstHit;
-        List<RaycastHit> hits = ReturnSortedRaycastHits(root);
-        foreach (RaycastHit hit in hits)
-        {
-            if (hit.transform.CompareTag("Player")) continue;
-
-            firstHit = hit;
-            Vector3 startPoint = root.position;
-            float sampleAngle = angle / (float)sampleRate;
-            float startAngle = -((float)sampleRate / 2f);
-            Vector3 startDir = Quaternion.AngleAxis(startAngle, Vector3.up) * heading;
-            for (int i = 0; i < sampleRate; i++)
-            {
-                Vector3 sampledDir = Quaternion.AngleAxis(sampleAngle * i, Vector3.up) * startDir;
-                Ray sampledRay = new Ray(startPoint, sampledDir);
-                rays.Add(sampledRay);
-            }
-
-            break;
-        }
-
-        return rays;
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_chestTransform.position, _attackRange);
-        Gizmos.color = Color.blue;
-        List<Ray> rays = ReturnRaysInCone(30f, 6, _fireballPoint, Camera.main.transform.forward);
-        if (rays.Count > 0)
-        {
-            foreach (Ray ray in rays)
-            {
-                Gizmos.DrawRay(ray);
-            }
-        }
     }
 }

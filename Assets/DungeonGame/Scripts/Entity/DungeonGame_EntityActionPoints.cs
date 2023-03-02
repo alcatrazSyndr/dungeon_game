@@ -65,6 +65,7 @@ public class DungeonGame_EntityActionPoints : MonoBehaviour
         {
             _actionPoints = 0f;
             _burntOut = true;
+            transform.GetComponentInChildren<DungeonGame_AnimatorHandler>().BurnOut();
 
             OnBurnOut?.Invoke();
             StopCoroutine(BurnOutCRT());
