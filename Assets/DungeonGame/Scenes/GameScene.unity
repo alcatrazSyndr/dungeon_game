@@ -614,6 +614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1054798418, guid: 719e6f341ddb28d40baa05af1a1de1dc, type: 3}
+      propertyPath: m_Name
+      value: DungeonGame_CameraTarget
+      objectReference: {fileID: 0}
     - target: {fileID: 507859260445180211, guid: 719e6f341ddb28d40baa05af1a1de1dc,
         type: 3}
       propertyPath: _debugPlayerUI

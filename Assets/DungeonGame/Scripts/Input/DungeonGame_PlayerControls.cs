@@ -80,6 +80,15 @@ public partial class @DungeonGame_PlayerControls : IInputActionCollection2, IDis
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondaryFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""abce74fa-85f9-4578-b384-c32be623325c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +342,17 @@ public partial class @DungeonGame_PlayerControls : IInputActionCollection2, IDis
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""ToggleMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45b80be7-1940-4873-a40d-20fc5ff2056c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SecondaryFire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -926,6 +946,7 @@ public partial class @DungeonGame_PlayerControls : IInputActionCollection2, IDis
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
         m_Player_ToggleMenu = m_Player.FindAction("ToggleMenu", throwIfNotFound: true);
+        m_Player_SecondaryFire = m_Player.FindAction("SecondaryFire", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1003,6 +1024,7 @@ public partial class @DungeonGame_PlayerControls : IInputActionCollection2, IDis
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Roll;
     private readonly InputAction m_Player_ToggleMenu;
+    private readonly InputAction m_Player_SecondaryFire;
     public struct PlayerActions
     {
         private @DungeonGame_PlayerControls m_Wrapper;
@@ -1013,6 +1035,7 @@ public partial class @DungeonGame_PlayerControls : IInputActionCollection2, IDis
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputAction @ToggleMenu => m_Wrapper.m_Player_ToggleMenu;
+        public InputAction @SecondaryFire => m_Wrapper.m_Player_SecondaryFire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1040,6 +1063,9 @@ public partial class @DungeonGame_PlayerControls : IInputActionCollection2, IDis
                 @ToggleMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleMenu;
                 @ToggleMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleMenu;
                 @ToggleMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleMenu;
+                @SecondaryFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryFire;
+                @SecondaryFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryFire;
+                @SecondaryFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryFire;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1062,6 +1088,9 @@ public partial class @DungeonGame_PlayerControls : IInputActionCollection2, IDis
                 @ToggleMenu.started += instance.OnToggleMenu;
                 @ToggleMenu.performed += instance.OnToggleMenu;
                 @ToggleMenu.canceled += instance.OnToggleMenu;
+                @SecondaryFire.started += instance.OnSecondaryFire;
+                @SecondaryFire.performed += instance.OnSecondaryFire;
+                @SecondaryFire.canceled += instance.OnSecondaryFire;
             }
         }
     }
@@ -1224,6 +1253,7 @@ public partial class @DungeonGame_PlayerControls : IInputActionCollection2, IDis
         void OnSprint(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
         void OnToggleMenu(InputAction.CallbackContext context);
+        void OnSecondaryFire(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

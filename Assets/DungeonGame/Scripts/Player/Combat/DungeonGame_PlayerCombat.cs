@@ -96,6 +96,14 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
             Destroy(_chargeVFX);
     }
 
+    private void AttackBeginCharge(string charge)
+    {
+        if (charge == "Fireball")
+            _chargeVFX = Instantiate(_fireballChargeVFX, _fireballPoint);
+        else if (charge == "FireBreath")
+            _chargeVFX = Instantiate(_fireballChargeVFX, _fireballPoint);
+    }
+
     private List<RaycastHit> ReturnSortedRaycastHits(Transform fromPoint)
     {
         Vector3 startPos = fromPoint.position;
@@ -107,15 +115,46 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         return hitList;
     }
 
-    private void AttackBeginCharge(string charge)
+    public List<Ray> ReturnRaysInCone(float angle, int sampleRate, Transform root, Vector3 heading)
     {
-        if (charge == "Fireball")
-            _chargeVFX = Instantiate(_fireballChargeVFX, _fireballPoint);
+        List<Ray> rays = new List<Ray>();
+
+        RaycastHit firstHit;
+        List<RaycastHit> hits = ReturnSortedRaycastHits(root);
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.transform.CompareTag("Player")) continue;
+
+            firstHit = hit;
+            Vector3 startPoint = root.position;
+            float sampleAngle = angle / (float)sampleRate;
+            float startAngle = -((float)sampleRate / 2f);
+            Vector3 startDir = Quaternion.AngleAxis(startAngle, Vector3.up) * heading;
+            for (int i = 0; i < sampleRate; i++)
+            {
+                Vector3 sampledDir = Quaternion.AngleAxis(sampleAngle * i, Vector3.up) * startDir;
+                Ray sampledRay = new Ray(startPoint, sampledDir);
+                rays.Add(sampledRay);
+            }
+
+            break;
+        }
+
+        return rays;
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_chestTransform.position, _attackRange);
+        Gizmos.color = Color.blue;
+        List<Ray> rays = ReturnRaysInCone(30f, 6, _fireballPoint, Camera.main.transform.forward);
+        if (rays.Count > 0)
+        {
+            foreach (Ray ray in rays)
+            {
+                Gizmos.DrawRay(ray);
+            }
+        }
     }
 }
