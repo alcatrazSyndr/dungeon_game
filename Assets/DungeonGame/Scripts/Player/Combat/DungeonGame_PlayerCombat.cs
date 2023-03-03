@@ -189,6 +189,10 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
                 {
                     StopCoroutine(_secondaryAttackCRT);
                     _rageFuryVFX = 1;
+                    _rageFuryVFX_1.Stop();
+                    _rageFuryVFX_1.gameObject.SetActive(false);
+                    _rageFuryVFX_2.Stop();
+                    _rageFuryVFX_2.gameObject.SetActive(false);
                 }
             }
         }
