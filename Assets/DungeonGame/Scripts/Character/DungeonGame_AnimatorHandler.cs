@@ -16,6 +16,7 @@ public class DungeonGame_AnimatorHandler : MonoBehaviour
     public UnityEvent OnFootstep = new UnityEvent();
     public UnityEvent OnSecondaryAttackStart = new UnityEvent();
     public UnityEvent OnSecondaryAttackEnd = new UnityEvent();
+    public UnityEvent OnSecondaryAttackTickPeak = new UnityEvent();
 
     #region Initialization
     public void Initialize(DungeonGame_NavMeshMovement controller, System.Action<Vector3, float> onPostAnimatorMoveCallback)
@@ -65,6 +66,11 @@ public class DungeonGame_AnimatorHandler : MonoBehaviour
     public void AttackPeak()
     {
         OnAttackPeak?.Invoke();
+    }
+
+    public void SecondaryAttackPeak()
+    {
+        OnSecondaryAttackTickPeak?.Invoke();
     }
 
     public void AttackBeginCharge(string charge)

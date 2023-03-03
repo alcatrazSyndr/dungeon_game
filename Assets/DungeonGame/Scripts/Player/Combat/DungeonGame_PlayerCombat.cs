@@ -10,6 +10,8 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     [SerializeField] private Transform _arrowPoint;
     [SerializeField] private GameObject _fireballChargeVFX;
     [SerializeField] private ParticleSystem _fireBreathVFX;
+    [SerializeField] private ParticleSystem _rageFuryVFX_1;
+    [SerializeField] private ParticleSystem _rageFuryVFX_2;
     [SerializeField] private float _attackRange = 1f;
     [SerializeField] private float _fistDamage = 5f;
     [SerializeField] private LayerMask _collisionLayer;
@@ -23,6 +25,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     private DungeonGame_EntityAttribute _attributes = null;
     private DungeonGame_EntityActionPoints _actionPoints = null;
     private GameObject _chargeVFX = null;
+    private int _rageFuryVFX = 1;
 
     private IEnumerator _secondaryAttackCRT = null;
 
@@ -41,6 +44,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         _animatorHandler.OnAttackBeginCharge.AddListener(AttackBeginCharge);
         _animatorHandler.OnSecondaryAttackStart.AddListener(SecondaryAttackStart);
         _animatorHandler.OnSecondaryAttackEnd.AddListener(SecondaryAttackEnd);
+        _animatorHandler.OnSecondaryAttackTickPeak.AddListener(SecondaryAttackAnimatorTick);
     }
 
     private void OnDisable()
@@ -49,6 +53,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         _animatorHandler.OnAttackBeginCharge.RemoveListener(AttackBeginCharge);
         _animatorHandler.OnSecondaryAttackStart.RemoveListener(SecondaryAttackStart);
         _animatorHandler.OnSecondaryAttackEnd.RemoveListener(SecondaryAttackEnd);
+        _animatorHandler.OnSecondaryAttackTickPeak.RemoveListener(SecondaryAttackAnimatorTick);
     }
 
     private void Attack()
@@ -116,7 +121,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         SecondaryAttack(false);
     }
 
-    private void SecondaryAttack(bool toggle)
+    private void SecondaryAttackAnimatorTick()
     {
         float damage = _fistDamage;
         DungeonGame_Item.WeaponTypes weaponType = DungeonGame_Item.WeaponTypes.Empty;
@@ -128,11 +133,86 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         }
         if (weaponType == DungeonGame_Item.WeaponTypes.Greatsword)
         {
-            // TODO
+            if (_meleeBasicController != null)
+            {
+                _meleeBasicController.Attack(_attackRange, _attributes.ReturnTotalStrengthDamage(damage) / 2f, _chestTransform, _damageSplashVFX);
+                if (_rageFuryVFX == 1)
+                {
+                    if (!_rageFuryVFX_1.gameObject.activeSelf)
+                        _rageFuryVFX_1.gameObject.SetActive(true);
+                    _rageFuryVFX_1.Play();
+                    _rageFuryVFX = 2;
+                }
+                else
+                {
+                    if (!_rageFuryVFX_2.gameObject.activeSelf)
+                        _rageFuryVFX_2.gameObject.SetActive(true);
+                    _rageFuryVFX_2.Play();
+                    _rageFuryVFX = 1;
+                }
+            }
         }
-        else if (weaponType == DungeonGame_Item.WeaponTypes.Mace)
+    }
+
+    private void SecondaryAttack(bool toggle)
+    {
+        float damage = _fistDamage;
+        DungeonGame_Item.WeaponTypes weaponType = DungeonGame_Item.WeaponTypes.Empty;
+        DungeonGame_Item.WeaponTypes secondaryWeaponType = DungeonGame_Item.WeaponTypes.Empty;
+        if (_inventoryController.PlayerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon] != null)
         {
-            // TODO
+            DungeonGame_WeaponSO weaponData = _inventoryController.PlayerEquipment[DungeonGame_Item.ItemTypes.PrimaryWeapon].ItemData as DungeonGame_WeaponSO;
+            weaponType = weaponData.WeaponType;
+            damage = weaponData.WeaponBaseDamage;
+        }
+        if (_inventoryController.PlayerEquipment[DungeonGame_Item.ItemTypes.SecondaryWeapon] != null)
+        {
+            DungeonGame_WeaponSO weaponData = _inventoryController.PlayerEquipment[DungeonGame_Item.ItemTypes.SecondaryWeapon].ItemData as DungeonGame_WeaponSO;
+            secondaryWeaponType = weaponData.WeaponType;
+        }
+        if (weaponType == DungeonGame_Item.WeaponTypes.Greatsword)
+        {
+            if (toggle && !_actionPoints.BurntOut)
+            {
+                if (_secondaryAttackCRT != null)
+                {
+                    StopCoroutine(_secondaryAttackCRT);
+                    _secondaryAttackCRT = null;
+                }
+                _secondaryAttackCRT = SecondaryAttackCRT_RageFury();
+                StartCoroutine(_secondaryAttackCRT);
+                _rageFuryVFX = 1;
+            }
+            else
+            {
+                if (_secondaryAttackCRT != null)
+                {
+                    StopCoroutine(_secondaryAttackCRT);
+                    _rageFuryVFX = 1;
+                }
+            }
+        }
+        else if (secondaryWeaponType == DungeonGame_Item.WeaponTypes.Shield)
+        {
+            if (toggle && !_actionPoints.BurntOut)
+            {
+                if (_secondaryAttackCRT != null)
+                {
+                    StopCoroutine(_secondaryAttackCRT);
+                    _secondaryAttackCRT = null;
+                }
+                _secondaryAttackCRT = SecondaryAttackCRT_ShieldWall();
+                StartCoroutine(_secondaryAttackCRT);
+                transform.GetComponent<DungeonGame_EntityHealth>().SetDamageNegation(0.2f);
+            }
+            else
+            {
+                if (_secondaryAttackCRT != null)
+                {
+                    StopCoroutine(_secondaryAttackCRT);
+                    transform.GetComponent<DungeonGame_EntityHealth>().SetDamageNegation(1f);
+                }
+            }
         }
         else if (weaponType == DungeonGame_Item.WeaponTypes.Staff)
         {
@@ -161,6 +241,24 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         else if (weaponType == DungeonGame_Item.WeaponTypes.Bow)
         {
             // TODO
+        }
+    }
+
+    private IEnumerator SecondaryAttackCRT_ShieldWall()
+    {
+        while (true)
+        {
+            _actionPoints.ChangeActionPoints(-0.25f);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    private IEnumerator SecondaryAttackCRT_RageFury()
+    {
+        while (true)
+        {
+            _actionPoints.ChangeActionPoints(-0.5f);
+            yield return new WaitForFixedUpdate();
         }
     }
 

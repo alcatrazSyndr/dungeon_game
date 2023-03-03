@@ -7,7 +7,7 @@ public class DungeonGame_Projectile : MonoBehaviour
     [SerializeField] protected LayerMask _collisionLayer;
     [SerializeField] protected float _projectileSpeed = 1f;
     [SerializeField] protected float _projectileSize = 1f;
-    [SerializeField] private GameObject _collisionVFXPrefab = null;
+    [SerializeField] protected GameObject _collisionVFXPrefab = null;
 
     protected string _owner = string.Empty;
     protected float _damage = 0f;
@@ -42,7 +42,7 @@ public class DungeonGame_Projectile : MonoBehaviour
             return false;
     }
 
-    protected void CheckCollisionsWithEntities()
+    protected virtual void CheckCollisionsWithEntities()
     {
         Collider[] inCollision = Physics.OverlapSphere(transform.position, _projectileSize, _collisionLayer.value, QueryTriggerInteraction.Collide);
         bool destroyPass = false;

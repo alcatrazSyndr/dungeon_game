@@ -17,6 +17,7 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
     private int _attack = 1;
     private bool _inAttack = false;
     private bool _actionBlock = false;
+    private bool _secondaryInput = false;
 
     private void OnEnable()
     {
@@ -95,6 +96,8 @@ public class DungeonGame_PlayerAnimation : MonoBehaviour
 
     private void SecondaryAttackInput(bool toggle)
     {
+        _secondaryInput = toggle;
+
         if (_animator.GetFloat("WeaponType") == 0f) return;
 
         if (toggle)

@@ -10012,6 +10012,7 @@ MonoBehaviour:
   _projectileSize: 0.25
   _collisionVFXPrefab: {fileID: 5251294199452170299, guid: c8b1d31757cdc8b46a8991703c2a073a,
     type: 3}
+  _aoeDamageSize: 1.25
 --- !u!1001 &5181628073620565028
 PrefabInstance:
   m_ObjectHideFlags: 0

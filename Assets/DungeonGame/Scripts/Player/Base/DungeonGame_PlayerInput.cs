@@ -3,6 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+#if UNITY_EDITOR
+using UnityEditor;
+
+[CustomEditor(typeof(DungeonGame_PlayerInput))]
+public class DungeonGame_PlayerInputEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        DungeonGame_PlayerInput myScript = (DungeonGame_PlayerInput)target;
+        if (GUILayout.Button("RMB Toggle On"))
+        {
+            myScript.Debug_RightClickToggle(true);
+        }
+        if (GUILayout.Button("RMB Toggle Off"))
+        {
+            myScript.Debug_RightClickToggle(false);
+        }
+    }
+}
+#endif
 
 public class DungeonGame_PlayerInput : MonoBehaviour
 {
@@ -88,5 +110,10 @@ public class DungeonGame_PlayerInput : MonoBehaviour
         _attack.Disable();
         _secondaryAttack.Disable();
         _menu.Disable();
+    }
+
+    public void Debug_RightClickToggle(bool toggle)
+    {
+        OnSecondaryAttackInputChanged?.Invoke(toggle);
     }
 }

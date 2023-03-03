@@ -54,6 +54,8 @@ public class DungeonGame_EntityHealth : MonoBehaviour
     public UnityEvent<float> OnHealthChanged = new UnityEvent<float>();
     public UnityEvent OnDeath = new UnityEvent();
 
+    private float _damageNegation = 1f;
+
     private void OnEnable()
     {
         _maxHealth = _initialHealth;
@@ -63,6 +65,11 @@ public class DungeonGame_EntityHealth : MonoBehaviour
     public void ChangeHealth(float offset)
     {
         if (!_alive) return;
+
+        if (offset < 0f && _damageNegation < 1f)
+        {
+            offset *= _damageNegation;
+        }
 
         _health += offset;
         _health = Mathf.Clamp(_health, 0f, _maxHealth);
@@ -75,6 +82,11 @@ public class DungeonGame_EntityHealth : MonoBehaviour
 
             OnDeath?.Invoke();
         }
+    }
+
+    public void SetDamageNegation(float negation)
+    {
+        _damageNegation = negation;
     }
 
     public void SetInitialHealth(float newHealth)
