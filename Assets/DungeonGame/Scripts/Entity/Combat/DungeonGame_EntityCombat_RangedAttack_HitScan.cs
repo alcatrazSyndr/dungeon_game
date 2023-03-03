@@ -37,7 +37,10 @@ public class DungeonGame_EntityCombat_RangedAttack_HitScan : MonoBehaviour
             targetHealth.ChangeHealth(-damage);
             Instantiate(hitVFX, projectile.transform.position, Quaternion.identity);
         }
+        ProjectileReachedEnd(projectile.transform.position, damage);
         Destroy(projectile);
         yield break;
     }
+
+    protected virtual void ProjectileReachedEnd(Vector3 position, float damage) { }
 }

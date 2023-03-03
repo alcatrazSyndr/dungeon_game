@@ -83,6 +83,12 @@ public class DungeonGame_AnimatorHandler : MonoBehaviour
         OnAttackEnd?.Invoke();
     }
 
+    public void SecondaryAttackEnd()
+    {
+        _animator.SetBool("LoopAttack", false);
+        OnSecondaryAttackTickPeak?.Invoke();
+    }
+
     public void Footstep()
     {
         OnFootstep?.Invoke();

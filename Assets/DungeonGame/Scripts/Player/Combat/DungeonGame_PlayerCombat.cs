@@ -9,6 +9,8 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     [SerializeField] private Transform _fireballPoint;
     [SerializeField] private Transform _arrowPoint;
     [SerializeField] private GameObject _fireballChargeVFX;
+    [SerializeField] private GameObject _lightningArrowChargeVFX;
+    [SerializeField] private GameObject _lightningArrowVFX;
     [SerializeField] private ParticleSystem _fireBreathVFX;
     [SerializeField] private ParticleSystem _rageFuryVFX_1;
     [SerializeField] private ParticleSystem _rageFuryVFX_2;
@@ -21,6 +23,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
     private DungeonGame_EntityCombat_RangedAttack_Fireball _fireballController = null;
     private DungeonGame_EntityCombat_ConeAttack_FireBreath _fireBreathController = null;
     private DungeonGame_EntityCombat_RangedAttack_Arrow _arrowController = null;
+    private DungeonGame_EntityCombat_RangedAttack_LightningShot _lightningShotController = null;
     private DungeonGame_PlayerInventoryController _inventoryController = null;
     private DungeonGame_EntityAttribute _attributes = null;
     private DungeonGame_EntityActionPoints _actionPoints = null;
@@ -36,6 +39,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         _fireballController = transform.GetComponent<DungeonGame_EntityCombat_RangedAttack_Fireball>();
         _fireBreathController = transform.GetComponent<DungeonGame_EntityCombat_ConeAttack_FireBreath>();
         _arrowController = transform.GetComponent<DungeonGame_EntityCombat_RangedAttack_Arrow>();
+        _lightningShotController = transform.GetComponent<DungeonGame_EntityCombat_RangedAttack_LightningShot>();
         _inventoryController = transform.GetComponent<DungeonGame_PlayerInventoryController>();
         _attributes = transform.GetComponent<DungeonGame_EntityAttribute>();
         _actionPoints = transform.GetComponent<DungeonGame_EntityActionPoints>();
@@ -152,6 +156,34 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
                 }
             }
         }
+        else if (weaponType == DungeonGame_Item.WeaponTypes.Bow)
+        {
+            if (_arrowController != null)
+            {
+                List<RaycastHit> hits = ReturnSortedRaycastHits(_arrowPoint);
+                foreach (RaycastHit hit in hits)
+                {
+                    if (hit.transform.CompareTag("Player")) continue;
+
+                    Quaternion rot = Quaternion.LookRotation(hit.point - _arrowPoint.position);
+                    GameObject vfxGO = Instantiate(_lightningArrowVFX, _arrowPoint.position, rot);
+                    vfxGO.transform.rotation *= Quaternion.Euler(-90f, 0f, 0f);
+                    DungeonGame_ParticleSystemDestroy vfx = vfxGO.GetComponent<DungeonGame_ParticleSystemDestroy>();
+                    vfx.Initialize(Vector3.Distance(hit.point, _arrowPoint.position));
+
+                    DungeonGame_EntityHealth health = null;
+                    if (hit.transform.GetComponent<DungeonGame_EntityHealth>())
+                    {
+                        health = hit.transform.GetComponent<DungeonGame_EntityHealth>();
+                    }
+                    _lightningShotController.Attack(damage * 2f, hit.point, health, _damageSplashVFX, _arrowPoint);
+                    _actionPoints.ChangeActionPoints(-50f);
+                    _lightningArrowChargeVFX.SetActive(false);
+
+                    break;
+                }
+            }
+        }
     }
 
     private void SecondaryAttack(bool toggle)
@@ -244,7 +276,7 @@ public class DungeonGame_PlayerCombat : MonoBehaviour
         }
         else if (weaponType == DungeonGame_Item.WeaponTypes.Bow)
         {
-            // TODO
+            _lightningArrowChargeVFX.SetActive(toggle);
         }
     }
 
